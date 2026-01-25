@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigneshwari | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-[#0b0f1a] text-white font-sans scroll-smooth">
+
+    <nav class="fixed w-full z-50 bg-[#0b0f1a]/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter text-blue-500">VJ<span>.</span></div>
+            <div class="space-x-8 hidden md:flex text-sm font-medium uppercase tracking-widest">
+                <a href="#about" class="hover:text-blue-400 transition">About</a>
+                <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
+                <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
+                <a href="#education" class="hover:text-blue-400 transition">Education</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+            Vigneshwari Jayaprakash
+        </h1>
+        <h2 class="text-xl md:text-2xl text-blue-400 font-mono mb-8">Software Development Engineer & Data Scientist</h2>
+        <p class="max-w-3xl text-gray-400 text-lg leading-relaxed mb-10">
+            Over 5 years of experience building mission-critical backend systems and GenAI solutions. 
+            Currently pursuing an MS in Data Science at ASU (4.0 GPA), bridging the gap between robust 
+            engineering and advanced data intelligence.
+        </p>
+        <div class="flex space-x-4">
+            <a href="https://linkedin.com/in/vigneshwari31" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-bold transition flex items-center">
+                <i class="fab fa-linkedin mr-2"></i> LinkedIn
+            </a>
+            <a href="#experience" class="border border-gray-600 hover:bg-gray-800 px-8 py-3 rounded-lg font-bold transition">View Experience</a>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-[#0f1624] px-6">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold mb-12 text-center">Technical Arsenal</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-[#161d2f] rounded-xl border border-gray-800 shadow-xl">
+                    <i class="fas fa-brain text-blue-500 text-3xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-4">Data Science & AI</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">LLMs, RAG, PyTorch, scikit-learn, Neural Networks, Feature Engineering, Model Evaluation.</p>
+                </div>
+                <div class="p-6 bg-[#161d2f] rounded-xl border border-gray-800 shadow-xl">
+                    <i class="fas fa-code text-green-500 text-3xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-4">Software Engineering</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Python, SQL, RESTful APIs, Object-Oriented Design (OOD), ETL Pipelines, Distributed Systems.</p>
+                </div>
+                <div class="p-6 bg-[#161d2f] rounded-xl border border-gray-800 shadow-xl">
+                    <i class="fas fa-tools text-purple-500 text-3xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-4">DevOps & Tools</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">AWS (EC2, S3), Docker, Git, CI/CD, GitHub Copilot, Jira, Agile/Scrum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold mb-12 text-center">Professional Journey</h3>
+            
+            <div class="relative pl-8 border-l-2 border-blue-500 mb-12">
+                <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-1"></div>
+                <h4 class="text-xl font-bold">New Mexico Department of IT</h4>
+                <p class="text-blue-400 font-mono text-sm mb-2">Data Science Intern (GenAI) | 2025</p>
+                <ul class="text-gray-400 text-sm space-y-2 list-disc ml-4">
+                    <li>Developed GenAI-powered chatbot using RAG, reducing investigation time by 30%.</li>
+                    <li>Optimized data access patterns, cutting retrieval latency by 45%.</li>
+                </ul>
+            </div>
+
+            <div class="relative pl-8 border-l-2 border-gray-700 mb-12">
+                <div class="absolute w-4 h-4 bg-gray-700 rounded-full -left-[9px] top-1"></div>
+                <h4 class="text-xl font-bold text-gray-300">Infosys Limited</h4>
+                <p class="text-gray-500 font-mono text-sm mb-2">Senior Software Engineer | 2013 – 2019</p>
+                <ul class="text-gray-500 text-sm space-y-2 list-disc ml-4">
+                    <li>Built fraud detection engine saving $1M+ annually for BNSF Railway.</li>
+                    <li>Architected ETL pipelines processing 1M+ daily transaction records.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-20 bg-[#0f1624] px-6">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold mb-12 text-center">Education</h3>
+            <div class="space-y-8">
+                <div class="flex justify-between items-start border-b border-gray-800 pb-6">
+                    <div>
+                        <h4 class="text-lg font-bold">Arizona State University</h4>
+                        <p class="text-gray-400">M.S. in Data Science</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-blue-400 font-bold">GPA: 4.0</p>
+                        <p class="text-gray-500 text-sm">Expected May 2026</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start border-b border-gray-800 pb-6">
+                    <div>
+                        <h4 class="text-lg font-bold">Anna University</h4>
+                        <p class="text-gray-400">B.Tech. in Information Technology</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-gray-500 text-sm">April 2013</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-gray-600 border-t border-gray-900 text-xs uppercase tracking-widest">
+        &copy; 2026 Vigneshwari Jayaprakash. Built with Tailwind CSS.
+    </footer>
+
+</body>
+</html>
