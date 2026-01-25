@@ -3,120 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vigneshwari | Portfolio</title>
+    <title>Vigneshwari | SDE & Data Science</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar to match the theme */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #061009; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
+        .emerald-glow:hover { box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+    </style>
 </head>
-<body class="bg-[#0b0f1a] text-white font-sans scroll-smooth">
+<body class="bg-[#061009] text-gray-200 font-sans scroll-smooth">
 
-    <nav class="fixed w-full z-50 bg-[#0b0f1a]/90 backdrop-blur-md border-b border-gray-800">
+    <nav class="fixed w-full z-50 bg-[#061009]/90 backdrop-blur-md border-b border-emerald-900/50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter text-blue-500">VJ<span>.</span></div>
-            <div class="space-x-8 hidden md:flex text-sm font-medium uppercase tracking-widest">
-                <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-                <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
-                <a href="#education" class="hover:text-blue-400 transition">Education</a>
+            <div class="text-2xl font-bold tracking-tighter text-emerald-500">VJ<span>.</span></div>
+            <div class="space-x-8 hidden md:flex text-xs font-medium uppercase tracking-widest">
+                <a href="#about" class="hover:text-emerald-400 transition">About</a>
+                <a href="#skills" class="hover:text-emerald-400 transition">Skills</a>
+                <a href="#experience" class="hover:text-emerald-400 transition">Experience</a>
+                <a href="#contact" class="hover:text-emerald-400 transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <section id="about" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
-            Vigneshwari Jayaprakash
+    <section id="about" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-900/20 via-transparent to-transparent">
+        <h1 class="text-6xl md:text-8xl font-extrabold mb-4 text-white tracking-tight">
+            Vigneshwari <span class="text-emerald-500">Jayaprakash</span>
         </h1>
-        <h2 class="text-xl md:text-2xl text-blue-400 font-mono mb-8">Software Development Engineer & Data Scientist</h2>
+        <h2 class="text-xl md:text-2xl text-emerald-400/80 font-mono mb-8 tracking-widest italic">Software Development Engineer & Data Scientist</h2>
         <p class="max-w-3xl text-gray-400 text-lg leading-relaxed mb-10">
-            Over 5 years of experience building mission-critical backend systems and GenAI solutions. 
-            Currently pursuing an MS in Data Science at ASU (4.0 GPA), bridging the gap between robust 
-            engineering and advanced data intelligence.
+            Bridging the gap between <span class="text-emerald-200">robust backend engineering</span> and <span class="text-emerald-200">advanced data intelligence</span>. 
+            5+ years of experience building scalable systems, currently mastering Data Science at ASU (4.0 GPA).
         </p>
-        <div class="flex space-x-4">
-            <a href="https://linkedin.com/in/vigneshwari31" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-bold transition flex items-center">
-                <i class="fab fa-linkedin mr-2"></i> LinkedIn
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-md font-bold transition emerald-glow">
+                Get In Touch
             </a>
-            <a href="#experience" class="border border-gray-600 hover:bg-gray-800 px-8 py-3 rounded-lg font-bold transition">View Experience</a>
+            <a href="YOUR_RESUME_LINK_HERE" target="_blank" class="border border-emerald-700 text-emerald-400 hover:bg-emerald-900/50 px-8 py-3 rounded-md font-bold transition">
+                <i class="fas fa-download mr-2"></i> Resume
+            </a>
+        </div>
+        <div class="mt-12 flex space-x-6 text-2xl text-gray-500">
+            <a href="https://github.com/vigneshwarijayaprakash" class="hover:text-emerald-400 transition"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/vigneshwari31" class="hover:text-emerald-400 transition"><i class="fab fa-linkedin"></i></a>
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-[#0f1624] px-6">
+    <section id="skills" class="py-20 px-6 bg-[#081a0e]">
         <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-bold mb-12 text-center">Technical Arsenal</h3>
+            <h3 class="text-3xl font-bold mb-12 text-center text-emerald-100">Technical Arsenal</h3>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 bg-[#161d2f] rounded-xl border border-gray-800 shadow-xl">
-                    <i class="fas fa-brain text-blue-500 text-3xl mb-4"></i>
-                    <h4 class="text-xl font-bold mb-4">Data Science & AI</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed">LLMs, RAG, PyTorch, scikit-learn, Neural Networks, Feature Engineering, Model Evaluation.</p>
+                <div class="p-8 bg-[#0b2414] rounded-2xl border border-emerald-900/30 hover:border-emerald-500/50 transition">
+                    <i class="fas fa-microchip text-emerald-500 text-3xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Data Science</h4>
+                    <p class="text-gray-400 text-sm">LLMs, RAG, PyTorch, Neural Networks, Feature Engineering.</p>
                 </div>
-                <div class="p-6 bg-[#161d2f] rounded-xl border border-gray-800 shadow-xl">
-                    <i class="fas fa-code text-green-500 text-3xl mb-4"></i>
-                    <h4 class="text-xl font-bold mb-4">Software Engineering</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed">Python, SQL, RESTful APIs, Object-Oriented Design (OOD), ETL Pipelines, Distributed Systems.</p>
+                <div class="p-8 bg-[#0b2414] rounded-2xl border border-emerald-900/30 hover:border-emerald-500/50 transition">
+                    <i class="fas fa-layer-group text-emerald-500 text-3xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Backend Eng</h4>
+                    <p class="text-gray-400 text-sm">Python, SQL, REST APIs, ETL Pipelines, Distributed Systems.</p>
                 </div>
-                <div class="p-6 bg-[#161d2f] rounded-xl border border-gray-800 shadow-xl">
-                    <i class="fas fa-tools text-purple-500 text-3xl mb-4"></i>
-                    <h4 class="text-xl font-bold mb-4">DevOps & Tools</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed">AWS (EC2, S3), Docker, Git, CI/CD, GitHub Copilot, Jira, Agile/Scrum.</p>
+                <div class="p-8 bg-[#0b2414] rounded-2xl border border-emerald-900/30 hover:border-emerald-500/50 transition">
+                    <i class="fas fa-cloud text-emerald-500 text-3xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Cloud & Tools</h4>
+                    <p class="text-gray-400 text-sm">AWS, Docker, CI/CD, Git, GitHub Copilot, Agile.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-20 px-6">
+    <section id="contact" class="py-24 px-6 bg-[#061009]">
         <div class="max-w-4xl mx-auto">
-            <h3 class="text-3xl font-bold mb-12 text-center">Professional Journey</h3>
-            
-            <div class="relative pl-8 border-l-2 border-blue-500 mb-12">
-                <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-1"></div>
-                <h4 class="text-xl font-bold">New Mexico Department of IT</h4>
-                <p class="text-blue-400 font-mono text-sm mb-2">Software Development Engineer (GenAI) | 2025</p>
-                <ul class="text-gray-400 text-sm space-y-2 list-disc ml-4">
-                    <li>Developed GenAI-powered chatbot using RAG, reducing investigation time by 30%.</li>
-                    <li>Optimized data access patterns, cutting retrieval latency by 45%.</li>
-                </ul>
-            </div>
+            <div class="bg-[#0b2414] p-10 md:p-16 rounded-3xl border border-emerald-900/50 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                
+                <h3 class="text-4xl font-bold mb-6 text-white text-center">Let's Build Something Great</h3>
+                <p class="text-emerald-200/60 text-center mb-12 text-lg">Currently seeking SDE and Data Science opportunities in the USA.</p>
+                
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-emerald-900/50 rounded-full flex items-center justify-center text-emerald-500">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <a href="mailto:vjayapr1@asu.edu" class="text-xl hover:text-emerald-400 transition">vjayapr1@asu.edu</a>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-emerald-900/50 rounded-full flex items-center justify-center text-emerald-500">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span class="text-xl text-gray-300">Tempe, Arizona</span>
+                        </div>
+                    </div>
 
-            <div class="relative pl-8 border-l-2 border-gray-700 mb-12">
-                <div class="absolute w-4 h-4 bg-gray-700 rounded-full -left-[9px] top-1"></div>
-                <h4 class="text-xl font-bold text-gray-300">Infosys Limited</h4>
-                <p class="text-gray-500 font-mono text-sm mb-2">Senior Software Engineer | 2013 – 2019</p>
-                <ul class="text-gray-500 text-sm space-y-2 list-disc ml-4">
-                    <li>Built fraud detection engine saving $1M+ annually for BNSF Railway.</li>
-                    <li>Architected ETL pipelines processing 1M+ daily transaction records.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+                    <div class="h-px md:h-20 w-full md:w-px bg-emerald-900/50"></div>
 
-    <section id="education" class="py-20 bg-[#0f1624] px-6">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-3xl font-bold mb-12 text-center">Education</h3>
-            <div class="space-y-8">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-6">
-                    <div>
-                        <h4 class="text-lg font-bold">Arizona State University</h4>
-                        <p class="text-gray-400">M.S. in Data Science</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-blue-400 font-bold">GPA: 4.0</p>
-                        <p class="text-gray-500 text-sm">Expected May 2026</p>
-                    </div>
-                </div>
-                <div class="flex justify-between items-start border-b border-gray-800 pb-6">
-                    <div>
-                        <h4 class="text-lg font-bold">Anna University</h4>
-                        <p class="text-gray-400">B.Tech. in Information Technology</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-gray-500 text-sm">April 2013</p>
+                    <div class="text-center md:text-left">
+                        <p class="text-sm uppercase tracking-widest text-emerald-500 mb-4">Social Connect</p>
+                        <div class="flex space-x-6 text-3xl">
+                            <a href="https://linkedin.com/in/vigneshwari31" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/vigneshwarijayaprakash" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-gray-600 border-t border-gray-900 text-xs uppercase tracking-widest">
-        &copy; 2026 Vigneshwari Jayaprakash. Built with Tailwind CSS.
+    <footer class="py-12 text-center text-emerald-900 text-xs uppercase tracking-[0.3em] font-bold">
+        Designed & Engineered by Vigneshwari Jayaprakash &copy; 2026
     </footer>
 
 </body>
