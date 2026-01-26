@@ -1,60 +1,166 @@
-<section id="about" class="py-24 px-6 max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-3 gap-6">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigneshwari | SDE & Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap');
         
-        <div class="md:col-span-2 bento-card p-10">
-            <h3 class="text-sm font-bold text-emerald-500 uppercase tracking-widest mb-6">About Me</h3>
-            <div class="space-y-6 text-gray-400 leading-relaxed">
-                <p>
-                    Back in 2013, I began my professional journey at <span class="text-emerald-400 font-medium">Infosys</span> [cite: 32, 36], where I spent over five years as a Senior Software Engineer architecting multi-tier backend systems and data pipelines[cite: 33, 37, 38]. I focused on building robust, scalable solutions for enterprise clients, ensuring complex data architectures supported critical business operations[cite: 37, 40].
-                </p>
-                <p>
-                    I later moved to the United States for personal reasons, which led to a career gap. I viewed this transition as an opportunity for intentional growth; I dedicated myself to <span class="text-white font-medium">upskilling in advanced technologies</span> like Deep Learning and Generative AI to remain at the forefront of the industry’s evolution. 
-                </p>
-                <p>
-                    This period of self-driven study served as the bridge to my current role as a Data Science graduate student at <span class="text-emerald-400 font-medium">Arizona State University</span> [cite: 7], where I maintain a <span class="text-white font-bold">4.0 GPA</span> and specialize in Computing and Decision Analytics[cite: 8].
-                </p>
-                <p>
-                    Currently, I am working with the <span class="text-emerald-400 font-medium">New Mexico Department of IT</span> [cite: 25], where I integrate my background in backend engineering with modern AI to build intelligent, production-ready solutions[cite: 26, 30]. I thrive at the intersection of software development and data intelligence.
-                </p>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #040a05; color: #e2e8f0; scroll-behavior: smooth; }
+        .mono { font-family: 'Fira Code', monospace; }
+        
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
+
+        .bento-card {
+            background: rgba(15, 23, 18, 0.6);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            transform: translateY(-5px);
+            background: rgba(16, 28, 22, 0.8);
+        }
+
+        .skill-tag {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-6xl mx-auto bento-card px-8 py-3 flex justify-between items-center border-white/5">
+            <div class="text-xl font-bold text-emerald-500 tracking-tighter">VJ<span>.</span></div>
+            <div class="space-x-8 hidden md:flex text-[10px] font-bold uppercase tracking-[0.2em]">
+                <a href="#about" class="hover:text-emerald-400 transition">Home</a>
+                <a href="#skills" class="hover:text-emerald-400 transition">Skills</a>
+                <a href="#experience" class="hover:text-emerald-400 transition">Experience</a>
+                <a href="#contact" class="hover:text-emerald-400 transition">Contact</a>
             </div>
         </div>
+    </nav>
 
-        <div class="bento-card p-10 flex flex-col justify-between">
-            <div>
-                <h3 class="text-sm font-bold text-emerald-500 uppercase tracking-widest mb-8 text-center md:text-left">Life Outside Code</h3>
-                <ul class="space-y-8">
-                    <li class="flex items-start gap-4">
-                        <div class="text-emerald-500 mt-1"><i class="fas fa-dumbbell"></i></div>
-                        <div>
-                            <span class="block text-white font-bold text-sm">Staying Active</span>
-                            <span class="text-xs text-gray-500 leading-tight">Gym sessions and outdoor activities under the Arizona sun.</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="text-emerald-500 mt-1"><i class="fas fa-palette"></i></div>
-                        <div>
-                            <span class="block text-white font-bold text-sm">Being Creative</span>
-                            <span class="text-xs text-gray-500">Painting, intricate craftworks, and sewing projects.</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="text-emerald-500 mt-1"><i class="fas fa-book-open"></i></div>
-                        <div>
-                            <span class="block text-white font-bold text-sm">Recharging</span>
-                            <span class="text-xs text-gray-500">Getting lost in a good book to expand perspectives beyond tech.</span>
-                        </div>
-                    </li>
-                </ul>
+    <section id="skills" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-emerald-500 uppercase tracking-[0.3em] mb-4">Technical Arsenal</h2>
+                [cite_start]<p class="text-gray-400 max-w-2xl mx-auto">Bridging 5+ years of engineering rigor with advanced data intelligence[cite: 4].</p>
             </div>
-            
-            <div class="mt-10 pt-6 border-t border-emerald-900/30">
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-2 font-bold text-center">Current Pursuit</p>
-                <div class="text-center">
-                    <p class="text-xs text-white font-mono">MS Data Science @ ASU</p>
-                    <p class="text-emerald-500 font-bold text-sm">GPA 4.0/4.0</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="bento-card p-8">
+                    <h4 class="text-emerald-400 mono text-xs uppercase tracking-widest mb-6 flex items-center">
+                        <i class="fas fa-terminal mr-2"></i> Programming & Core
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                        [cite_start]<span class="skill-tag px-3 py-1 rounded-md text-[11px] font-medium">Python [cite: 16]</span>
+                        [cite_start]<span class="skill-tag px-3 py-1 rounded-md text-[11px] font-medium">SQL [cite: 16]</span>
+                        [cite_start]<span class="skill-tag px-3 py-1 rounded-md text-[11px] font-medium">R [cite: 16]</span>
+                        [cite_start]<span class="skill-tag px-3 py-1 rounded-md text-[11px] font-medium">FastAPI [cite: 21]</span>
+                        [cite_start]<span class="skill-tag px-3 py-1 rounded-md text-[11px] font-medium">Flask [cite: 21]</span>
+                    </div>
+                </div>
+
+                <div class="bento-card p-8 border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.05)]">
+                    <h4 class="text-emerald-400 mono text-xs uppercase tracking-widest mb-6 flex items-center">
+                        <i class="fas fa-brain mr-2"></i> ML & GenAI
+                    </h4>
+                    <div class="grid grid-cols-1 gap-4">
+                        <ul class="text-[11px] text-gray-400 space-y-2">
+                            [cite_start]<li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2 opacity-50"></i> LLMs & RAG [cite: 20]</li>
+                            [cite_start]<li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2 opacity-50"></i> scikit-learn [cite: 21]</li>
+                            [cite_start]<li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-2 opacity-50"></i> PyTorch [cite: 21]</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-emerald-900/30">
+                            [cite_start]<span class="text-[10px] text-gray-500 uppercase">Anomaly Detection [cite: 42]</span>
+                            [cite_start]<span class="text-[10px] text-gray-500 uppercase">Feature Engineering [cite: 20]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card p-8">
+                    <h4 class="text-emerald-400 mono text-xs uppercase tracking-widest mb-6 flex items-center">
+                        <i class="fas fa-database mr-2"></i> Data Engineering
+                    </h4>
+                    <div class="space-y-4">
+                        [cite_start]<p class="text-[11px] text-gray-500 leading-relaxed italic">ETL pipelines and distributed systems handling 1M+ daily records[cite: 38].</p>
+                        <div class="flex flex-wrap gap-2">
+                            [cite_start]<span class="skill-tag px-3 py-1 rounded-md text-[10px]">Data Modeling [cite: 18]</span>
+                            [cite_start]<span class="skill-tag px-3 py-1 rounded-md text-[10px]">Automation [cite: 39]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 bento-card p-8">
+                    <div class="flex flex-col md:flex-row justify-between gap-8">
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold text-sm mb-4">Systems Engineering</h4>
+                            <div class="flex flex-wrap gap-2">
+                                [cite_start]<span class="skill-tag px-4 py-1.5 rounded-lg text-xs">REST APIs [cite: 18]</span>
+                                [cite_start]<span class="skill-tag px-4 py-1.5 rounded-lg text-xs">OOD & Patterns [cite: 24]</span>
+                                [cite_start]<span class="skill-tag px-4 py-1.5 rounded-lg text-xs">CI/CD [cite: 22]</span>
+                                [cite_start]<span class="skill-tag px-4 py-1.5 rounded-lg text-xs">Docker [cite: 21]</span>
+                            </div>
+                        </div>
+                        <div class="flex-1 border-l border-emerald-900/20 pl-0 md:pl-8">
+                            <h4 class="text-white font-bold text-sm mb-4">CS Fundamentals</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                [cite_start]Expertise in <span class="text-emerald-500">Data Structures & Algorithms</span> [cite: 24] and 
+                                [cite_start]<span class="text-emerald-500">Performance Optimization</span>[cite: 18].
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card p-8">
+                    <h4 class="text-emerald-400 mono text-xs uppercase tracking-widest mb-6">Analytics</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 rounded-md text-[11px]">Tableau</span>
+                        <span class="skill-tag px-3 py-1 rounded-md text-[11px]">Power BI</span>
+                        [cite_start]<span class="skill-tag px-3 py-1 rounded-md text-[11px]">A/B Testing [cite: 47]</span>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 50 },
+                "color": { "value": "#10b981" },
+                "opacity": { "value": 0.2 },
+                "size": { "value": 1.5 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#10b981", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 1 }
+            }
+        });
+    </script>
+</body>
+</html>
