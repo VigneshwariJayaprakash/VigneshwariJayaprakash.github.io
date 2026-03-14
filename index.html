@@ -101,6 +101,82 @@
             background: rgba(5,150,105,0.85); opacity: 0; transition: opacity 0.3s; border-radius: 24px;
         }
         .project-card:hover .overlay-link { opacity: 1; }
+
+        /* In-progress badge */
+        .in-progress-badge {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            box-shadow: 0 2px 8px rgba(245,158,11,0.35);
+        }
+        .in-progress-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 1.4s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.7); }
+        }
+
+        /* SentinelRAG visual */
+        .sentinel-visual {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 70%, #059669 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .sentinel-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(52,211,153,0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16,185,129,0.1) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(6,95,70,0.3) 0%, transparent 50%);
+        }
+        .sentinel-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(52,211,153,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52,211,153,0.07) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        .sentinel-node {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(52,211,153,0.25);
+            border: 1px solid rgba(52,211,153,0.5);
+            animation: node-pulse 3s ease-in-out infinite;
+        }
+        @keyframes node-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+        .sentinel-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(52,211,153,0.4), transparent);
+            height: 1px;
+            animation: scan-line 4s linear infinite;
+        }
+        @keyframes scan-line {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(300px); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -153,9 +229,25 @@
             <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-4 leading-tight">
                 VIGNESHWARI<br><span class="text-emerald-600">JAYAPRAKASH</span>
             </h1>
-            <p class="text-gray-500 mb-8 max-w-md text-base leading-relaxed">
-                5+ years delivering production ML, GenAI &amp; analytics systems in regulated enterprise environments — from <strong>$1B+ freight networks</strong> to <strong>state government cybersecurity</strong>.
-            </p>
+            <!-- ── UPDATED: Impact bullets replacing paragraph ── -->
+            <ul class="text-gray-500 mb-8 max-w-md text-sm leading-relaxed space-y-2.5">
+                <li class="flex items-start gap-2.5">
+                    <span class="text-emerald-500 font-bold mt-0.5">▸</span>
+                    GenAI platform cutting intelligence retrieval <strong class="text-gray-700">70%</strong> at NM State Government
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <span class="text-emerald-500 font-bold mt-0.5">▸</span>
+                    Fraud detection saving <strong class="text-gray-700">$1M+/yr</strong> across 1M+ daily transactions — earned CFO recognition
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <span class="text-emerald-500 font-bold mt-0.5">▸</span>
+                    <strong class="text-gray-700">85%</strong> threat detection accuracy deployed at statewide cybersecurity scale
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <span class="text-emerald-500 font-bold mt-0.5">▸</span>
+                    5+ years production ML · MS Data Science ASU · <strong class="text-emerald-600">4.0 GPA</strong>
+                </li>
+            </ul>
             <div class="flex gap-4 flex-wrap mb-8">
                 <a href="#contact"
                    class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg shadow-emerald-200">
@@ -166,14 +258,14 @@
                    View Work
                 </a>
                 <a href="Vigneshwari_Jayaprakash_Resume.pdf" download
-                   class="border border-emerald-300 hover:border-emerald-500 text-gray-700 px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2">
+                   class="border border-emerald-300 hover:border-emerald-500 text-gray-700 px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 track-resume">
                    <i class="fas fa-download text-sm"></i> Resume
                 </a>
             </div>
             <div class="flex items-center gap-5">
-                <a href="https://linkedin.com/in/vigneshwari31" target="_blank" class="text-gray-400 hover:text-emerald-600 text-xl transition"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/vigneshwarijayaprakash" target="_blank" class="text-gray-400 hover:text-emerald-600 text-xl transition"><i class="fab fa-github"></i></a>
-                <a href="mailto:vjayapr1@asu.edu" class="text-gray-400 hover:text-emerald-600 text-xl transition"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/vigneshwari31" target="_blank" class="text-gray-400 hover:text-emerald-600 text-xl transition track-social" data-label="linkedin_hero"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/vigneshwarijayaprakash" target="_blank" class="text-gray-400 hover:text-emerald-600 text-xl transition track-github"><i class="fab fa-github"></i></a>
+                <a href="mailto:vjayapr1@asu.edu" class="text-gray-400 hover:text-emerald-600 text-xl transition track-contact" data-label="email_icon"><i class="fas fa-envelope"></i></a>
                 <span class="text-gray-300">|</span>
                 <span class="text-xs text-gray-400 font-medium">MS Data Science · ASU · <span class="text-emerald-600 font-bold">4.0 GPA</span></span>
             </div>
@@ -473,18 +565,49 @@
     <div class="max-w-6xl mx-auto">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Portfolio</p>
         <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">Featured Projects</h2>
-        <div class="bento-card project-card overflow-hidden mb-6 reveal delay-2">
-            <a href="https://github.com/vigneshwarijayaprakash" target="_blank" class="overlay-link">
+
+        <!-- ── SENTINELRAG — redesigned with visual + in-progress ── -->
+        <div class="bento-card project-card overflow-hidden mb-6 reveal delay-2" data-project="SentinelRAG">
+            <a href="https://github.com/vigneshwarijayaprakash" target="_blank" class="overlay-link track-github">
                 <span class="bg-white text-emerald-700 font-bold px-6 py-3 rounded-full text-sm">View on GitHub →</span>
             </a>
             <div class="md:flex">
-                <div class="md:w-2/5 bg-gradient-to-br from-emerald-700 to-emerald-900 flex items-center justify-center p-14 min-h-48">
-                    <div class="text-center text-white">
-                        <i class="fas fa-shield-halved text-6xl mb-4 opacity-80"></i>
-                        <div class="text-xs uppercase tracking-widest opacity-60">Featured Project</div>
+                <!-- Custom SVG visual for SentinelRAG -->
+                <div class="md:w-2/5 sentinel-visual flex items-center justify-center p-10 min-h-56 relative">
+                    <div class="sentinel-grid"></div>
+                    <!-- Animated nodes -->
+                    <div class="sentinel-node" style="width:10px;height:10px;top:20%;left:15%;animation-delay:0s;"></div>
+                    <div class="sentinel-node" style="width:8px;height:8px;top:65%;left:25%;animation-delay:0.8s;"></div>
+                    <div class="sentinel-node" style="width:12px;height:12px;top:35%;left:75%;animation-delay:1.5s;"></div>
+                    <div class="sentinel-node" style="width:7px;height:7px;top:75%;left:70%;animation-delay:0.4s;"></div>
+                    <div class="sentinel-node" style="width:9px;height:9px;top:15%;left:60%;animation-delay:2s;"></div>
+                    <!-- Scan line -->
+                    <div class="sentinel-line" style="width:100%;left:0;top:0;animation-delay:0s;"></div>
+                    <!-- Center content -->
+                    <div class="relative z-10 text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-shield-halved text-4xl text-emerald-300"></i>
+                        </div>
+                        <div class="font-bold text-emerald-200 text-sm tracking-widest uppercase mb-1">SentinelRAG</div>
+                        <div class="text-emerald-400/70 text-xs font-mono">18,700+ entities · local inference</div>
+                        <!-- mini entity bar visualization -->
+                        <div class="mt-4 flex gap-1 justify-center">
+                            <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:14px"></div>
+                            <div class="h-5 w-1 bg-emerald-400/80 rounded-full" style="height:20px"></div>
+                            <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:10px"></div>
+                            <div class="h-5 w-1 bg-emerald-300/90 rounded-full" style="height:24px"></div>
+                            <div class="h-5 w-1 bg-emerald-400/70 rounded-full" style="height:16px"></div>
+                            <div class="h-5 w-1 bg-emerald-400/50 rounded-full" style="height:12px"></div>
+                            <div class="h-5 w-1 bg-emerald-300/80 rounded-full" style="height:22px"></div>
+                            <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:9px"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="md:w-3/5 p-9">
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                        <!-- In-progress badge -->
+                        <span class="in-progress-badge">In Progress</span>
+                    </div>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">Python</span>
                         <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">LangChain</span>
@@ -505,14 +628,15 @@
                 </div>
             </div>
         </div>
+
         <div class="grid md:grid-cols-3 gap-6">
-            <div class="bento-card project-card overflow-hidden reveal">
-                <a href="https://github.com/VigneshwariJayaprakash/railway-track-inspector" target="_blank" class="overlay-link">
+            <div class="bento-card project-card overflow-hidden reveal" data-project="Railway Track Inspection">
+                <a href="https://github.com/VigneshwariJayaprakash/railway-track-inspector" target="_blank" class="overlay-link track-github">
                     <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">View on GitHub →</span>
                 </a>
-        <div class="h-44 overflow-hidden">
-            <img src="railway-defect-detection-pro.jpg" alt="Wildfire Detection" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-        </div>
+                <div class="h-44 overflow-hidden">
+                    <img src="railway-defect-detection-pro.jpg" alt="Railway Track Inspection" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                </div>
                 <div class="p-6">
                     <div class="flex flex-wrap gap-1.5 mb-3">
                         <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">PyTorch</span>
@@ -528,13 +652,13 @@
                     </div>
                 </div>
             </div>
-            <div class="bento-card project-card overflow-hidden reveal delay-1">
-                <a href="https://github.com/aneeshjayan/Wildfire-detection" target="_blank" class="overlay-link">
+            <div class="bento-card project-card overflow-hidden reveal delay-1" data-project="Wildfire Detection">
+                <a href="https://github.com/aneeshjayan/Wildfire-detection" target="_blank" class="overlay-link track-github">
                     <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">View on GitHub →</span>
                 </a>
-            <div class="h-44 overflow-hidden">
-                <img src="wildfire-detection-image.png" alt="Fraud Detection" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-            </div>
+                <div class="h-44 overflow-hidden">
+                    <img src="wildfire-detection-image.png" alt="Wildfire Detection" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                </div>
                 <div class="p-6">
                     <div class="flex flex-wrap gap-1.5 mb-3">
                         <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">PyTorch</span>
@@ -549,13 +673,13 @@
                     </div>
                 </div>
             </div>
-            <div class="bento-card project-card overflow-hidden reveal delay-2">
-                <a href="https://github.com/VigneshwariJayaprakash/fraud-risk-platform" target="_blank" class="overlay-link">
+            <div class="bento-card project-card overflow-hidden reveal delay-2" data-project="Fraud Detection">
+                <a href="https://github.com/VigneshwariJayaprakash/fraud-risk-platform" target="_blank" class="overlay-link track-github">
                     <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">View on GitHub →</span>
                 </a>
-            <div class="h-44 overflow-hidden">
+                <div class="h-44 overflow-hidden">
                     <img src="fraud_detection_project.png" alt="Fraud Detection" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-            </div>
+                </div>
                 <div class="p-6">
                     <div class="flex flex-wrap gap-1.5 mb-3">
                         <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">XGBoost</span>
@@ -613,29 +737,31 @@
 </section>
 
 <!-- ── CONTACT ── -->
+<!-- ── Phone number removed for privacy ── -->
 <footer id="contact" class="py-24 px-6">
     <div class="max-w-4xl mx-auto text-center">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-4 reveal">Get In Touch</p>
         <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 reveal delay-1">Let's build something<br>remarkable together.</h2>
         <p class="text-gray-500 mb-12 max-w-xl mx-auto reveal delay-2">Open to Data Scientist, ML Engineer, and Analytics roles. Whether you have a project or an opportunity — I'd love to connect.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 reveal delay-2">
-            <a href="mailto:vjayapr1@asu.edu" class="bento-card px-8 py-4 hover:border-emerald-400 transition flex items-center gap-3 text-gray-700">
+            <a href="mailto:vjayapr1@asu.edu"
+               class="bento-card px-8 py-4 hover:border-emerald-400 transition flex items-center gap-3 text-gray-700 track-contact"
+               data-label="email_footer">
                 <i class="fas fa-envelope text-emerald-600"></i> vjayapr1@asu.edu
             </a>
-            <a href="tel:5055509282" class="bento-card px-8 py-4 hover:border-emerald-400 transition flex items-center gap-3 text-gray-700">
-                <i class="fas fa-phone text-emerald-600"></i> 505-550-9282
-            </a>
-            <a href="https://linkedin.com/in/vigneshwari31" target="_blank" class="bento-card px-8 py-4 hover:border-emerald-400 transition flex items-center gap-3 text-gray-700">
+            <a href="https://linkedin.com/in/vigneshwari31" target="_blank"
+               class="bento-card px-8 py-4 hover:border-emerald-400 transition flex items-center gap-3 text-gray-700 track-social"
+               data-label="linkedin_footer">
                 <i class="fab fa-linkedin text-emerald-600"></i> LinkedIn
             </a>
         </div>
         <div class="flex justify-center gap-4 mb-14 reveal delay-3">
             <a href="https://github.com/vigneshwarijayaprakash" target="_blank"
-               class="w-12 h-12 bento-card flex items-center justify-center hover:border-emerald-400 transition text-gray-600">
+               class="w-12 h-12 bento-card flex items-center justify-center hover:border-emerald-400 transition text-gray-600 track-github">
                 <i class="fab fa-github text-lg"></i>
             </a>
             <a href="Vigneshwari_Jayaprakash_Resume.pdf" download
-               class="bento-card px-6 h-12 flex items-center justify-center gap-2 hover:border-emerald-400 transition text-gray-600 text-sm font-bold">
+               class="bento-card px-6 h-12 flex items-center justify-center gap-2 hover:border-emerald-400 transition text-gray-600 text-sm font-bold track-resume">
                 <i class="fas fa-file-pdf text-emerald-600"></i> Download Resume
             </a>
         </div>
@@ -648,13 +774,15 @@
 </footer>
 
 <script>
+// ── Progress bar ──
 const bar = document.getElementById('progress-bar');
 window.addEventListener('scroll', () => {
     const s = document.documentElement.scrollTop;
     const h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.transform = `scaleX(${s/h})`;
+    bar.style.transform = `scaleX(${s / h})`;
 });
 
+// ── Mobile menu ──
 const btn = document.getElementById('mobile-menu-btn');
 const closeBtn = document.getElementById('close-menu');
 const menu = document.getElementById('mobile-menu');
@@ -662,6 +790,7 @@ btn.addEventListener('click', () => menu.classList.add('active'));
 closeBtn.addEventListener('click', () => menu.classList.remove('active'));
 document.querySelectorAll('.menu-link').forEach(l => l.addEventListener('click', () => menu.classList.remove('active')));
 
+// ── Experience tabs ──
 document.querySelectorAll('.exp-tab').forEach(tab => {
     tab.addEventListener('click', () => {
         document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
@@ -671,16 +800,89 @@ document.querySelectorAll('.exp-tab').forEach(tab => {
     });
 });
 
+// ── Scroll reveal ──
 const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
+// ── Smooth scroll ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
         const t = document.querySelector(a.getAttribute('href'));
         if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+// ── GA4 Event Tracking ──
+// Resume downloads
+document.querySelectorAll('a[href*="Resume.pdf"], .track-resume').forEach(a => {
+    a.addEventListener('click', () => {
+        gtag('event', 'resume_download', {
+            event_category: 'engagement',
+            event_label: 'resume_pdf'
+        });
+    });
+});
+
+// GitHub clicks
+document.querySelectorAll('a[href*="github.com"], .track-github').forEach(a => {
+    a.addEventListener('click', () => {
+        gtag('event', 'github_click', {
+            event_category: 'engagement',
+            event_label: a.href || 'github'
+        });
+    });
+});
+
+// Project card views (click)
+document.querySelectorAll('.project-card[data-project]').forEach(card => {
+    card.addEventListener('click', () => {
+        gtag('event', 'project_view', {
+            event_category: 'portfolio',
+            event_label: card.dataset.project
+        });
+    });
+});
+
+// Contact clicks
+document.querySelectorAll('.track-contact').forEach(a => {
+    a.addEventListener('click', () => {
+        gtag('event', 'contact_click', {
+            event_category: 'engagement',
+            event_label: a.dataset.label || 'contact'
+        });
+    });
+});
+
+// LinkedIn clicks
+document.querySelectorAll('.track-social').forEach(a => {
+    a.addEventListener('click', () => {
+        gtag('event', 'social_click', {
+            event_category: 'engagement',
+            event_label: a.dataset.label || 'linkedin'
+        });
+    });
+});
+
+// Scroll depth tracking
+const depths = { 25: false, 50: false, 75: false, 100: false };
+window.addEventListener('scroll', () => {
+    const scrollPct = Math.round(
+        (document.documentElement.scrollTop /
+        (document.documentElement.scrollHeight - window.innerHeight)) * 100
+    );
+    [25, 50, 75, 100].forEach(d => {
+        if (scrollPct >= d && !depths[d]) {
+            depths[d] = true;
+            gtag('event', 'scroll_depth', {
+                event_category: 'engagement',
+                event_label: `${d}%`
+            });
+        }
     });
 });
 </script>
