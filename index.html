@@ -575,13 +575,13 @@
     </div>
 </section>
 
-<!-- ── PROJECTS ── UPDATED: Added AMAT project as second featured card -->
+<!-- ── <!-- ── PROJECTS ── -->
 <section id="projects" class="py-24 px-6">
     <div class="max-w-6xl mx-auto">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Portfolio</p>
         <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">Featured Projects</h2>
 
-        <!-- SentinelRAG — existing -->
+        <!-- SentinelRAG — existing, unchanged -->
         <div class="bento-card project-card overflow-hidden mb-6 reveal delay-2" data-project="SentinelRAG">
             <a href="https://github.com/VigneshwariJayaprakash/SentinelRAG" target="_blank" class="overlay-link track-github">
                 <span class="bg-white text-emerald-700 font-bold px-6 py-3 rounded-full text-sm">View on GitHub →</span>
@@ -638,13 +638,121 @@
             </div>
         </div>
 
-        <!-- NEW: Agentic Supply Chain Demand Orchestrator -->
+        <!-- NEW: E-Commerce Hybrid Recommender System -->
+        <div class="bento-card project-card overflow-hidden mb-6 reveal" data-project="E-Commerce Hybrid Recommender System">
+            <a href="https://github.com/VigneshwariJayaprakash/ecom-recommender" target="_blank" class="overlay-link track-github">
+                <span class="bg-white text-purple-700 font-bold px-6 py-3 rounded-full text-sm">View on GitHub →</span>
+            </a>
+            <div class="md:flex">
+                <!-- Recommender visual — purple themed two-tower architecture -->
+                <div class="md:w-2/5 flex items-center justify-center p-10 min-h-56 relative overflow-hidden"
+                     style="background: linear-gradient(135deg, #2d1b69 0%, #3d2b7a 40%, #4c3494 70%, #6d4bba 100%);">
+                    <!-- Grid background -->
+                    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(167,139,250,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.07) 1px, transparent 1px); background-size: 28px 28px;"></div>
+                    <!-- Animated nodes -->
+                    <div class="absolute rounded-full" style="width:8px;height:8px;top:20%;left:12%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:0s;"></div>
+                    <div class="absolute rounded-full" style="width:6px;height:6px;top:70%;left:18%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:0.7s;"></div>
+                    <div class="absolute rounded-full" style="width:10px;height:10px;top:25%;left:82%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:1.4s;"></div>
+                    <div class="absolute rounded-full" style="width:7px;height:7px;top:72%;left:78%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:2.1s;"></div>
+                    <!-- Two tower visual -->
+                    <div class="relative z-10 w-full">
+                        <div class="text-center mb-3">
+                            <div class="text-purple-200 text-xs font-mono tracking-widest uppercase mb-1">Two-Tower RecSys</div>
+                        </div>
+                        <!-- Towers -->
+                        <div class="flex items-end justify-center gap-4 mb-3">
+                            <!-- User Tower -->
+                            <div class="text-center">
+                                <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
+                                     style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
+                                    <i class="fas fa-user text-purple-300 text-lg mb-1"></i>
+                                    <div class="text-purple-300 text-xs font-bold">User</div>
+                                    <div class="text-purple-400 text-xs">Tower</div>
+                                </div>
+                                <div class="text-purple-400/60 text-xs font-mono">64d</div>
+                            </div>
+                            <!-- FAISS arrow -->
+                            <div class="text-center pb-6">
+                                <div class="text-purple-300/80 text-xs font-mono mb-1">FAISS</div>
+                                <div class="text-purple-400 text-lg">→</div>
+                                <div class="text-purple-300/60 text-xs">top 100</div>
+                            </div>
+                            <!-- LightGBM -->
+                            <div class="text-center">
+                                <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
+                                     style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
+                                    <i class="fas fa-ranking-star text-purple-300 text-lg mb-1"></i>
+                                    <div class="text-purple-300 text-xs font-bold">LGBM</div>
+                                    <div class="text-purple-400 text-xs">Ranker</div>
+                                </div>
+                                <div class="text-purple-400/60 text-xs font-mono">top 10</div>
+                            </div>
+                            <!-- Item Tower -->
+                            <div class="text-center">
+                                <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
+                                     style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
+                                    <i class="fas fa-box text-purple-300 text-lg mb-1"></i>
+                                    <div class="text-purple-300 text-xs font-bold">Item</div>
+                                    <div class="text-purple-400 text-xs">Tower</div>
+                                </div>
+                                <div class="text-purple-400/60 text-xs font-mono">64d</div>
+                            </div>
+                        </div>
+                        <!-- Stats row -->
+                        <div class="flex justify-center gap-3">
+                            <div class="text-center">
+                                <div class="text-purple-200 text-xs font-bold">700k+</div>
+                                <div class="text-purple-400/70 text-xs">reviews</div>
+                            </div>
+                            <div class="text-purple-500/40 text-xs">|</div>
+                            <div class="text-center">
+                                <div class="text-purple-200 text-xs font-bold">65ms</div>
+                                <div class="text-purple-400/70 text-xs">latency</div>
+                            </div>
+                            <div class="text-purple-500/40 text-xs">|</div>
+                            <div class="text-center">
+                                <div class="text-purple-200 text-xs font-bold">99.999%</div>
+                                <div class="text-purple-400/70 text-xs">sparse</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+                <div class="md:w-3/5 p-9">
+                    <div class="flex flex-wrap items-center gap-2 mb-4">
+                        <span class="in-progress-badge">In Progress</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Python</span>
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">ALS · Implicit</span>
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">FAISS</span>
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">LightGBM</span>
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Sentence Transformers</span>
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">FastAPI</span>
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Streamlit</span>
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">MLflow</span>
+                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Docker</span>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-gray-900 mb-3">E-Commerce Hybrid Recommender System</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Production-style two-stage recommendation pipeline on 700k+ Amazon Beauty reviews — mirroring architectures at Amazon and Pinterest. Stage 1 uses ALS Matrix Factorization with FAISS ANN search to retrieve 100 candidates in milliseconds. Stage 2 re-ranks with LightGBM optimizing a combined CTR + CVR objective. Cold start is solved using Sentence Transformer embeddings for 75.5% of products with no purchase history. Served via FastAPI with a live Streamlit demo achieving ~65ms P99 latency.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">700k+ reviews</span>
+                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">NDCG@10: 0.975</span>
+                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">65ms P99 latency</span>
+                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">Cold Start solved</span>
+                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">99.999% sparse</span>
+                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">Live API demo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agentic Supply Chain — existing, unchanged -->
         <div class="bento-card project-card overflow-hidden mb-6 reveal" data-project="Agentic Supply Chain Demand Orchestrator">
             <a href="https://github.com/VigneshwariJayaprakash/agentic-supply-chain-orchestrator" target="_blank" class="overlay-link track-github">
                 <span class="bg-white text-blue-700 font-bold px-6 py-3 rounded-full text-sm">View on GitHub →</span>
             </a>
             <div class="md:flex">
-                <!-- AMAT visual — blue supply chain theme -->
                 <div class="md:w-2/5 amat-visual flex items-center justify-center p-10 min-h-56 relative">
                     <div class="amat-grid"></div>
                     <div class="amat-node" style="width:10px;height:10px;top:20%;left:15%;animation-delay:0.3s;"></div>
@@ -657,7 +765,6 @@
                         </div>
                         <div class="font-bold text-blue-200 text-sm tracking-widest uppercase mb-1">Supply Chain AI</div>
                         <div class="text-blue-300/70 text-xs font-mono">46M+ records · M5 dataset</div>
-                        <!-- Mini forecast bar chart -->
                         <div class="mt-4 flex gap-1 justify-center items-end" style="height:28px">
                             <div class="amat-bar w-1 rounded-sm" style="height:12px;animation-delay:0s"></div>
                             <div class="amat-bar w-1 rounded-sm" style="height:18px;animation-delay:0.2s"></div>
@@ -697,7 +804,7 @@
             </div>
         </div>
 
-        <!-- 3-column grid — existing projects -->
+        <!-- 3-column grid — existing, unchanged -->
         <div class="grid md:grid-cols-3 gap-6">
             <div class="bento-card project-card overflow-hidden reveal" data-project="Railway Track Inspection">
                 <a href="https://github.com/VigneshwariJayaprakash/railway-track-inspector" target="_blank" class="overlay-link track-github">
