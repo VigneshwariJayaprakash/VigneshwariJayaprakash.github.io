@@ -1,3 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigneshwari Jayaprakash | Data Scientist · Agentic AI · Ex-BNSF</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SBN8SBQKK"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2SBN8SBQKK');
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8faf8;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        .bento-card {
+            background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(16,185,129,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .bento-card:hover {
+            border-color: rgba(16,185,129,0.5);
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 10px 30px rgba(16,185,129,0.1);
+        }
+        .skill-pill {
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.25);
+            padding: 0.4rem 0.9rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            color: #047857;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .skill-pill:hover {
+            background: rgba(16,185,129,0.15);
+            border-color: rgba(16,185,129,0.5);
+            transform: scale(1.05);
+        }
+        .metric-badge {
+            background: rgba(16,185,129,0.1);
+            border: 1px solid rgba(16,185,129,0.3);
+            color: #047857;
+            padding: 0.2rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #059669, #047857);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .section-alt { background-color: #f0f7f2; }
+
+        /* Highlight badge for BNSF */
+        .domain-badge {
+            background: linear-gradient(135deg, #047857, #065f46);
+            color: white;
+            padding: 0.3rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 2px 8px rgba(4,120,87,0.25);
+        }
+
+        /* Experience tabs */
+        .exp-tab { cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent; }
+        .exp-tab:hover { background: rgba(16,185,129,0.05); color: #047857; }
+        .exp-tab.active { border-left-color: #059669; background: rgba(16,185,129,0.07); color: #047857; }
+        .exp-pane { display: none; }
+        .exp-pane.active { display: block; animation: fadeIn 0.35s ease; }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+        /* Scroll reveal */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Progress bar */
+        #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg,#059669,#34d399); z-index: 9999; transform-origin: left; transform: scaleX(0); transition: transform 0.1s; }
+
+        /* Project card */
+        .project-card { position: relative; overflow: hidden; }
+        .project-card .overlay-link {
+            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+            background: rgba(5,150,105,0.85); opacity: 0; transition: opacity 0.3s; border-radius: 24px;
+        }
+        .project-card:hover .overlay-link { opacity: 1; }
+
+        /* In-progress badge */
+        .in-progress-badge {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            box-shadow: 0 2px 8px rgba(245,158,11,0.35);
+        }
+        .in-progress-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: white; border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 1.4s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.7); }
+        }
+
+        /* SentinelRAG visual */
+        .sentinel-visual {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 70%, #059669 100%);
+            position: relative; overflow: hidden;
+        }
+        .sentinel-visual::before {
+            content: ''; position: absolute; inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(52,211,153,0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16,185,129,0.1) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(6,95,70,0.3) 0%, transparent 50%);
+        }
+        .sentinel-grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(52,211,153,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52,211,153,0.07) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        .sentinel-node {
+            position: absolute; border-radius: 50%;
+            background: rgba(52,211,153,0.25);
+            border: 1px solid rgba(52,211,153,0.5);
+            animation: node-pulse 3s ease-in-out infinite;
+        }
+        @keyframes node-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+        .sentinel-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(52,211,153,0.4), transparent);
+            height: 1px;
+            animation: scan-line 4s linear infinite;
+        }
+        @keyframes scan-line {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 1; } 90% { opacity: 1; }
+            100% { transform: translateY(300px); opacity: 0; }
+        }
+
+        /* AMAT supply chain visual */
+        .amat-visual {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1a4f7a 40%, #1565a0 70%, #1976d2 100%);
+            position: relative; overflow: hidden;
+        }
+        .amat-visual::before {
+            content: ''; position: absolute; inset: 0;
+            background-image:
+                radial-gradient(circle at 25% 40%, rgba(100,181,246,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 70%, rgba(30,136,229,0.1) 0%, transparent 40%);
+        }
+        .amat-grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(100,181,246,0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(100,181,246,0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        .amat-bar {
+            display: inline-block;
+            background: rgba(100,181,246,0.5);
+            border-radius: 2px;
+            animation: bar-grow 2s ease-in-out infinite alternate;
+        }
+        @keyframes bar-grow {
+            from { opacity: 0.5; transform: scaleY(0.85); }
+            to   { opacity: 1;   transform: scaleY(1); }
+        }
+        .amat-node {
+            position: absolute; border-radius: 50%;
+            background: rgba(100,181,246,0.2);
+            border: 1px solid rgba(100,181,246,0.4);
+            animation: node-pulse 3.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- ── NAV ── -->
+<nav class="fixed w-full z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto bento-card px-8 py-3 flex justify-between items-center">
+        <div class="text-xl font-bold text-emerald-700 tracking-tighter">VJ.</div>
+        <div class="space-x-8 hidden md:flex text-[10px] font-bold uppercase tracking-[0.2em] text-gray-600">
+            <a href="#hero"       class="hover:text-emerald-600 transition">Home</a>
+            <a href="#about"      class="hover:text-emerald-600 transition">About</a>
+            <a href="#skills"     class="hover:text-emerald-600 transition">Skills</a>
+            <a href="#experience" class="hover:text-emerald-600 transition">Experience</a>
+            <a href="#projects"   class="hover:text-emerald-600 transition">Projects</a>
+            <a href="#contact"    class="hover:text-emerald-600 transition">Contact</a>
+        </div>
+        <a href="Vigneshwari_Jayaprakash_Resume.pdf" download
+           class="hidden md:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-[0.15em] px-5 py-2 rounded-full transition">
+            <i class="fas fa-download text-xs"></i> Resume
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden text-emerald-600 text-2xl"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white z-50 md:hidden p-8 border-l border-emerald-100 shadow-xl">
+    <button id="close-menu" class="text-emerald-600 text-2xl mb-8 float-right"><i class="fas fa-times"></i></button>
+    <div class="flex flex-col space-y-6 mt-16 text-sm font-bold uppercase tracking-widest text-gray-600">
+        <a href="#hero"       class="hover:text-emerald-600 transition menu-link">Home</a>
+        <a href="#about"      class="hover:text-emerald-600 transition menu-link">About</a>
+        <a href="#skills"     class="hover:text-emerald-600 transition menu-link">Skills</a>
+        <a href="#experience" class="hover:text-emerald-600 transition menu-link">Experience</a>
+        <a href="#projects"   class="hover:text-emerald-600 transition menu-link">Projects</a>
+        <a href="#contact"    class="hover:text-emerald-600 transition menu-link">Contact</a>
+        <a href="Vigneshwari_Jayaprakash_Resume.pdf" download
+           class="mt-4 bg-emerald-600 text-white text-center py-3 rounded-full font-bold menu-link">Download CV</a>
+    </div>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero" class="min-h-screen flex items-center justify-center pt-24 px-6">
+    <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 reveal">
+            <div class="flex items-center gap-3 mb-4 flex-wrap">
+                <span class="w-8 h-px bg-emerald-500"></span>
+                <p class="text-emerald-600 font-bold tracking-widest text-xs uppercase">Data Scientist · ML Engineer · Agentic AI</p>
+                <span class="domain-badge"><i class="fas fa-train text-[10px]"></i> 6 Yrs BNSF Domain</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-4 leading-tight">
+                VIGNESHWARI<br><span class="text-emerald-600">JAYAPRAKASH</span>
+            </h1>
+            <ul class="text-gray-500 mb-8 max-w-lg text-sm space-y-3">
+                <li class="flex items-center gap-3">
+                    <span class="text-emerald-500 font-bold flex-shrink-0">▸</span>
+                    <span><strong class="text-gray-800">6 years engineering ML &amp; data systems for BNSF Railway</strong> via Infosys — fraud detection, predictive maintenance, freight analytics</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="text-emerald-500 font-bold flex-shrink-0">▸</span>
+                    <span>Agentic AI systems — LangGraph + RAG reasoning over real financial &amp; operational data</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="text-emerald-500 font-bold flex-shrink-0">▸</span>
+                    <span>Fraud detection saving <strong class="text-gray-800">$1M+/yr</strong> across 1M+ daily transactions — earned <strong class="text-emerald-700">BNSF CFO recognition</strong></span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="text-emerald-500 font-bold flex-shrink-0">▸</span>
+                    <span>Optimization &amp; forecasting on <strong class="text-gray-800">46M+</strong> records — MAPE &lt; 8%, geospatial-aware demand planning</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="text-emerald-500 font-bold flex-shrink-0">▸</span>
+                    <span>5+ years production ML · MS Data Science ASU · <strong class="text-emerald-600">4.0 GPA</strong></span>
+                </li>
+            </ul>
+            <div class="flex gap-4 flex-wrap mb-8">
+                <a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg shadow-emerald-200">Get in touch</a>
+                <a href="#projects" class="border border-emerald-300 hover:border-emerald-500 text-gray-700 px-8 py-4 rounded-full font-bold transition-all">View Work</a>
+                <a href="Vigneshwari_Jayaprakash_Resume.pdf" download
+                   class="border border-emerald-300 hover:border-emerald-500 text-gray-700 px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 track-resume">
+                   <i class="fas fa-download text-sm"></i> Resume
+                </a>
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="https://linkedin.com/in/vigneshwari31" target="_blank" class="text-gray-400 hover:text-emerald-600 text-xl transition track-social" data-label="linkedin_hero"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/vigneshwarijayaprakash" target="_blank" class="text-gray-400 hover:text-emerald-600 text-xl transition track-github"><i class="fab fa-github"></i></a>
+                <a href="mailto:vjayapr1@asu.edu" class="text-gray-400 hover:text-emerald-600 text-xl transition track-contact" data-label="email_icon"><i class="fas fa-envelope"></i></a>
+                <span class="text-gray-300">|</span>
+                <span class="text-xs text-gray-400 font-medium">MS Data Science · ASU · <span class="text-emerald-600 font-bold">4.0 GPA</span></span>
+            </div>
+        </div>
+        <div class="order-1 md:order-2 flex justify-center reveal delay-2">
+            <div class="relative w-64 h-64 md:w-80 md:h-80">
+                <div class="absolute inset-0 bg-emerald-400 rounded-[2rem] rotate-6 opacity-15 blur-xl"></div>
+                <div class="relative bg-white rounded-[3rem] w-full h-full overflow-hidden border border-emerald-200 shadow-lg shadow-emerald-100">
+                    <img src="profile.png" alt="Vigneshwari Jayaprakash" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="py-14 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bento-card p-7 text-center reveal">
+            <div class="stat-number">6 yrs</div>
+            <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">BNSF Domain</p>
+        </div>
+        <div class="bento-card p-7 text-center reveal delay-1">
+            <div class="stat-number">$1M+</div>
+            <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">Cost Savings Delivered</p>
+        </div>
+        <div class="bento-card p-7 text-center reveal delay-2">
+            <div class="stat-number">46M+</div>
+            <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">Records Forecasted</p>
+        </div>
+        <div class="bento-card p-7 text-center reveal delay-3">
+            <div class="stat-number">4.0</div>
+            <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">GPA at ASU</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about" class="py-24 px-6 section-alt">
+    <div class="max-w-5xl mx-auto">
+        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">About</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">My Journey</h2>
+        <div class="bento-card p-10 md:p-14 reveal delay-2">
+            <p class="text-gray-600 text-base leading-relaxed mb-5">
+                I began my career in <strong class="text-emerald-700">2013 at Infosys</strong>, where I spent <strong class="text-emerald-700">six years embedded with BNSF Railway</strong> — one of North America's largest freight networks — progressing from Software Engineer to Data Scientist while shipping production ML and data systems for fraud detection, predictive maintenance, and freight operations analytics.
+            </p>
+            <p class="text-gray-600 text-base leading-relaxed mb-5">
+                That tenure gave me deep <strong class="text-emerald-700">rail &amp; freight domain context</strong>: locomotive telemetry, revenue accounting workflows, regulatory reporting, intermodal logistics, and the operational rhythms of a Class I railroad. I'm now returning to that domain with a sharper toolkit — Generative AI, LLMs, RAG, and cloud-native ML.
+            </p>
+            <p class="text-gray-600 text-base leading-relaxed mb-5">
+                After relocating to the United States, I invested in <strong class="text-emerald-700">1,200+ hours of self-directed upskilling</strong> in Generative AI, LLMs, RAG architectures, transformer internals, and cloud-native ML — building hands-on expertise in PyTorch, AWS, Docker, and vector databases before enrolling at ASU.
+            </p>
+            <p class="text-gray-600 text-base leading-relaxed mb-5">
+                I'm completing an <strong class="text-emerald-700">M.S. in Data Science (Computing &amp; Decision Analytics)</strong> at Arizona State University with a perfect <strong class="text-emerald-700">4.0 GPA</strong>. I was also a <strong class="text-emerald-700">Gold Medalist</strong> during my undergraduate studies at Anna University.
+            </p>
+            <p class="text-gray-600 text-base leading-relaxed mb-10">
+                Most recently, I served as a <strong class="text-emerald-700">Data Scientist Intern at the NM Department of IT</strong> — architecting a first-of-its-kind GenAI conversational analytics platform using LangGraph + RAG, and deploying ensemble anomaly detection models achieving <strong class="text-emerald-700">85% threat detection accuracy</strong> at statewide scale.
+            </p>
+            <div class="border-t border-emerald-100 pt-10">
+                <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2"><span class="text-emerald-500">∼</span> Beyond the code...</h3>
+                <div class="grid md:grid-cols-3 gap-5">
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 hover:border-emerald-300 transition">
+                        <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-3"><i class="fas fa-dumbbell"></i></div>
+                        <h4 class="font-bold text-gray-900 mb-1 text-sm">Staying Active</h4>
+                        <p class="text-gray-500 text-xs leading-relaxed">Gym sessions and outdoor activities.</p>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 hover:border-emerald-300 transition">
+                        <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-3"><i class="fas fa-palette"></i></div>
+                        <h4 class="font-bold text-gray-900 mb-1 text-sm">Being Creative</h4>
+                        <p class="text-gray-500 text-xs leading-relaxed">Painting, sewing, and intricate craftwork.</p>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 hover:border-emerald-300 transition">
+                        <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-3"><i class="fas fa-book-open"></i></div>
+                        <h4 class="font-bold text-gray-900 mb-1 text-sm">Recharging</h4>
+                        <p class="text-gray-500 text-xs leading-relaxed">Books that expand perspective beyond the tech world.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">Technical Skills</h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- 1. Agentic AI & LLM (Highlighted) -->
+            <div class="bento-card p-9 flex flex-col items-center text-center reveal"
+                 style="border-color: rgba(16,185,129,0.4);">
+
+                <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                    <i class="fas fa-robot"></i>
+                </div>
+
+                <h3 class="text-lg font-bold text-gray-900 mb-3">
+                    Agentic AI & LLM Architecture
+                </h3>
+
+                <p class="text-gray-500 text-xs leading-relaxed mb-5 max-w-xs">
+                    End-to-end agentic systems, multi-step reasoning, RAG pipelines, transformer internals, 
+                    fine-tuning (LoRA/QLoRA), and production LLM deployment.
+                </p>
+
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-pill">LangGraph</span>
+                    <span class="skill-pill">LangChain</span>
+                    <span class="skill-pill">RAG</span>
+                    <span class="skill-pill">FAISS</span>
+                    <span class="skill-pill">ChromaDB</span>
+                    <span class="skill-pill">Transformers</span>
+                    <span class="skill-pill">LoRA / QLoRA</span>
+                    <span class="skill-pill">Hugging Face</span>
+                    <span class="skill-pill">Embeddings</span>
+                    <span class="skill-pill">vLLM / Ollama</span>
+                </div>
+            </div>
+
+            <!-- 2. ML & Optimization -->
+            <div class="bento-card p-9 flex flex-col items-center text-center reveal">
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
+                    <i class="fas fa-brain"></i>
+                </div>
+
+                <h3 class="text-lg font-bold text-gray-900 mb-3">
+                    ML, Forecasting & Optimization
+                </h3>
+
+                <p class="text-gray-500 text-xs mb-5">
+                    Predictive modeling, anomaly detection, time-series forecasting, and optimization in production environments.
+                </p>
+
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-pill">XGBoost</span>
+                    <span class="skill-pill">ARIMA</span>
+                    <span class="skill-pill">PyTorch</span>
+                    <span class="skill-pill">Scikit-learn</span>
+                    <span class="skill-pill">SHAP</span>
+                    <span class="skill-pill">OR-Tools</span>
+                </div>
+            </div>
+
+            <!-- 3. MLOps -->
+            <div class="bento-card p-9 flex flex-col items-center text-center reveal">
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
+                    <i class="fas fa-server"></i>
+                </div>
+
+                <h3 class="text-lg font-bold text-gray-900 mb-3">
+                    MLOps & Engineering
+                </h3>
+
+                <p class="text-gray-500 text-xs mb-5">
+                    End-to-end ML lifecycle, experiment tracking, pipelines, and scalable deployment.
+                </p>
+
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-pill">MLflow</span>
+                    <span class="skill-pill">Airflow</span>
+                    <span class="skill-pill">Docker</span>
+                    <span class="skill-pill">Kubernetes</span>
+                    <span class="skill-pill">CI/CD</span>
+                    <span class="skill-pill">AWS</span>
+                </div>
+            </div>
+
+            <!-- 4. Data Engineering -->
+            <div class="bento-card p-9 flex flex-col items-center text-center reveal">
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
+                    <i class="fas fa-database"></i>
+                </div>
+
+                <h3 class="text-lg font-bold text-gray-900 mb-3">
+                    Data Engineering
+                </h3>
+
+                <p class="text-gray-500 text-xs mb-5">
+                    Distributed pipelines, real-time data systems, and large-scale ETL processing.
+                </p>
+
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-pill">Python</span>
+                    <span class="skill-pill">SQL</span>
+                    <span class="skill-pill">PySpark</span>
+                    <span class="skill-pill">Kafka</span>
+                    <span class="skill-pill">Hadoop</span>
+                </div>
+            </div>
+
+            <!-- 5. Analytics -->
+            <div class="bento-card p-9 flex flex-col items-center text-center reveal">
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+
+                <h3 class="text-lg font-bold text-gray-900 mb-3">
+                    Analytics & BI
+                </h3>
+
+                <p class="text-gray-500 text-xs mb-5">
+                    Statistical analysis, dashboards, and data storytelling for business decisions.
+                </p>
+
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-pill">Tableau</span>
+                    <span class="skill-pill">Power BI</span>
+                    <span class="skill-pill">A/B Testing</span>
+                    <span class="skill-pill">EDA</span>
+                </div>
+            </div>
+
+            <!-- 6. Cloud -->
+            <div class="bento-card p-9 flex flex-col items-center text-center reveal">
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
+                    <i class="fas fa-cloud"></i>
+                </div>
+
+                <h3 class="text-lg font-bold text-gray-900 mb-3">
+                    Cloud & Infrastructure
+                </h3>
+
+                <p class="text-gray-500 text-xs mb-5">
+                    Cloud-native ML systems, serverless architecture, and scalable infrastructure.
+                </p>
+
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-pill">AWS</span>
+                    <span class="skill-pill">SageMaker</span>
+                    <span class="skill-pill">Lambda</span>
+                    <span class="skill-pill">Kubernetes</span>
+                    <span class="skill-pill">Docker</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience" class="py-24 px-6 section-alt">
+    <div class="max-w-5xl mx-auto">
+        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Career</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">Professional Journey</h2>
+        <div class="bento-card overflow-hidden reveal delay-2">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-56 flex-shrink-0 border-b md:border-b-0 md:border-r border-emerald-100 p-4 flex md:flex-col gap-1 overflow-x-auto md:overflow-visible">
+                    <button class="exp-tab active text-left px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider" data-target="pane-nm">
+                        <div class="text-emerald-700">NM Dept of IT</div>
+                        <div class="text-gray-400 font-normal normal-case tracking-normal mt-0.5">2025</div>
+                    </button>
+                    <button class="exp-tab text-left px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider" data-target="pane-ta">
+                        <div>BNSF · Tech Analyst</div>
+                        <div class="text-gray-400 font-normal normal-case tracking-normal mt-0.5">via Infosys · 2017–19</div>
+                    </button>
+                    <button class="exp-tab text-left px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider" data-target="pane-sr">
+                        <div>BNSF · Data Scientist</div>
+                        <div class="text-gray-400 font-normal normal-case tracking-normal mt-0.5">via Infosys · 2015–17</div>
+                    </button>
+                    <button class="exp-tab text-left px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider" data-target="pane-ds">
+                        <div>BNSF · Software Engineer</div>
+                        <div class="text-gray-400 font-normal normal-case tracking-normal mt-0.5">via Infosys · 2013–15</div>
+                    </button>
+                    <button class="exp-tab text-left px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider" data-target="pane-research">
+                        <div>Ind. Research</div>
+                        <div class="text-gray-400 font-normal normal-case tracking-normal mt-0.5">2019–2024</div>
+                    </button>
+                </div>
+                <div class="flex-1 p-8">
+
+                    <!-- NM DOIT pane -->
+                    <div class="exp-pane active" id="pane-nm">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-gray-900">New Mexico Dept. of Information Technology</h3>
+                                <p class="text-emerald-600 font-semibold text-sm mt-1">Data Scientist Intern</p>
+                                <p class="text-gray-400 text-xs mt-0.5">Jun 2025 – Aug 2025 · State Government · Albuquerque, NM</p>
+                            </div>
+                            <span class="metric-badge">Latest Role</span>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">GenAI Conversational Analytics Platform</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Architected a GenAI platform using <span class="metric-badge">LangGraph + RAG</span> on AWS Lambda &amp; S3 processing 10K+ cybersecurity incidents, reducing intelligence retrieval time by <span class="metric-badge">70%</span> (hours → seconds).</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Ensemble Anomaly Detection</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Deployed <span class="metric-badge">XGBoost + Isolation Forest</span> achieving <span class="metric-badge">85% threat detection accuracy</span> with <span class="metric-badge">60% fewer false positives</span> — integrated via FastAPI microservices.</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Real-Time ETL &amp; Data Quality</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Built Airflow-orchestrated ETL pipelines with automated validation, improving data quality by <span class="metric-badge">40%</span> and cutting failure rate by <span class="metric-badge">30%</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BNSF Tech Analyst pane (REFRAMED — BNSF lead) -->
+                    <div class="exp-pane" id="pane-ta">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-gray-900 flex items-center gap-2"><i class="fas fa-train text-emerald-600 text-sm"></i> BNSF Railway <span class="text-gray-400 text-sm font-normal">(via Infosys)</span></h3>
+                                <p class="text-emerald-600 font-semibold text-sm mt-1">Technology Analyst — Data &amp; Analytics</p>
+                                <p class="text-gray-400 text-xs mt-0.5">Jan 2017 – Jan 2019 · Class I Freight Network · North America</p>
+                            </div>
+                            <span class="metric-badge">CFO Recognition</span>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">ML-Powered Fraud Detection — BNSF Revenue Accounting</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Built <span class="metric-badge">XGBoost + Random Forest</span> fraud detection processing <span class="metric-badge">1M+ daily BNSF transactions</span>, delivering <span class="metric-badge">$1M+ annual savings</span> and earning a formal <strong class="text-emerald-700">BNSF CFO commendation</strong>.</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">SHAP-Based Model Explainability for Regulated Decisions</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Engineered a <span class="metric-badge">SHAP explainability layer</span> for high-stakes financial decisions in a regulated rail-finance environment, reducing stakeholder review cycles by <span class="metric-badge">30%</span> and ensuring auditability.</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">A/B Testing &amp; Model Iteration</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Applied causal inference &amp; A/B testing across 5+ model iterations, improving <span class="metric-badge">F1 score by 18%</span> and reducing false negatives in production.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BNSF Data Scientist pane (REFRAMED) -->
+                    <div class="exp-pane" id="pane-sr">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-gray-900 flex items-center gap-2"><i class="fas fa-train text-emerald-600 text-sm"></i> BNSF Railway <span class="text-gray-400 text-sm font-normal">(via Infosys)</span></h3>
+                                <p class="text-emerald-600 font-semibold text-sm mt-1">Data Scientist — Predictive Maintenance &amp; Optimization</p>
+                                <p class="text-gray-400 text-xs mt-0.5">Jun 2015 – Jan 2017 · Locomotive Fleet Analytics</p>
+                            </div>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Predictive Maintenance Optimization for BNSF Locomotive Fleet</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Designed time-series predictive maintenance and maintenance-scheduling optimization models for <span class="metric-badge">500+ BNSF locomotives</span>, reducing unplanned downtime by <span class="metric-badge">25%</span> and saving an estimated <span class="metric-badge">$400K annually</span> across the freight network.</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Distributed ETL at Rail-Network Scale</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Orchestrated <span class="metric-badge">PySpark + Hadoop</span> ETL handling <span class="metric-badge">5TB+ daily ingestion</span> from BNSF telemetry and operational systems at 99.9% uptime, powering Tableau &amp; Power BI dashboards for 10+ stakeholders across operations and finance.</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">MLflow &amp; ML Lifecycle Standardization</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Implemented <span class="metric-badge">MLflow</span> experiment tracking and versioning, cutting deployment time by <span class="metric-badge">35%</span> and standardizing the ML lifecycle across a 6-person team embedded with BNSF.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BNSF Software Engineer pane (REFRAMED senior) -->
+                    <div class="exp-pane" id="pane-ds">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-gray-900 flex items-center gap-2"><i class="fas fa-train text-emerald-600 text-sm"></i> BNSF Railway <span class="text-gray-400 text-sm font-normal">(via Infosys)</span></h3>
+                                <p class="text-emerald-600 font-semibold text-sm mt-1">Software Engineer — Foundational Data Infrastructure</p>
+                                <p class="text-gray-400 text-xs mt-0.5">Oct 2013 – May 2015 · Freight &amp; Operations Data Platforms</p>
+                            </div>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Production Data Pipelines for BNSF Operational Systems</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Engineered ML &amp; analytics data pipelines processing <span class="metric-badge">500K+ daily BNSF freight records</span> across operational and revenue systems, maintaining <span class="metric-badge">99%+ data completeness</span> across sprint cycles.</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Automated Data Validation &amp; Quality Frameworks</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Built automated validation and quality monitoring frameworks across 3 production BNSF pipelines, reducing data defect rates by <span class="metric-badge">45%</span> — establishing the foundation that later ML systems were deployed on top of.</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Cross-Functional Software &amp; SQL Engineering</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Production-quality coding in <span class="metric-badge">Java</span>, <span class="metric-badge">Python</span>, and <span class="metric-badge">SQL</span>, integrating enterprise platforms via APIs and web services. Delivered through CI/CD pipelines and formal change-control rigor consistent with regulated rail operations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Independent Research pane -->
+                    <div class="exp-pane" id="pane-research">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-gray-900">Independent Researcher</h3>
+                                <p class="text-emerald-600 font-semibold text-sm mt-1">Self-Directed Research — Generative AI &amp; Data Science</p>
+                                <p class="text-gray-400 text-xs mt-0.5">Jan 2019 – May 2024 · United States</p>
+                            </div>
+                            <span class="metric-badge">1,200+ hrs</span>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Structured Upskilling in GenAI &amp; Cloud ML</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Completed <span class="metric-badge">1,200+ hours</span> in GenAI, LLMs, RAG architectures, transformer internals, and cloud-native ML — gaining hands-on expertise in <span class="metric-badge">PyTorch</span>, <span class="metric-badge">AWS</span>, and <span class="metric-badge">Docker</span> ahead of M.S. enrollment at ASU.</p>
+                            </div>
+                            <div class="border-l-2 border-emerald-200 pl-4">
+                                <p class="text-sm font-semibold text-gray-800 mb-1">Certifications &amp; Personal Projects</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Earned ML Specialization, Deep Learning Specialization, and <span class="metric-badge">Gen AI with AWS</span> certifications. Built multiple projects across computer vision, NLP, and RAG systems.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="flex justify-center gap-4 mb-10">
+    <button class="proj-tab active" data-tab="all">All</button>
+    <button class="proj-tab" data-tab="ml">Machine Learning</button>
+    <button class="proj-tab" data-tab="agentic">Agentic AI</button>
+</div>
+
 <!-- ── PROJECTS SECTION (drop-in replacement) ── -->
 <!-- Replace everything from the proj-tab buttons div through the end of the old projects section -->
 
@@ -438,3 +1154,127 @@
   // They're already outside — just control visibility
 })();
 </script>
+<!-- ── EDUCATION ── -->
+<section class="py-24 px-6 section-alt">
+    <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Education</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">Academic Background</h2>
+        <div class="grid md:grid-cols-2 gap-6 mb-6 reveal delay-2">
+            <div class="bento-card p-8">
+                <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-4"><i class="fas fa-graduation-cap text-xl"></i></div>
+                <h3 class="text-lg font-extrabold text-gray-900 mb-1">M.S. in Data Science</h3>
+                <p class="text-emerald-600 text-sm font-bold mb-1">Arizona State University</p>
+                <p class="text-gray-500 text-sm mb-1">Computing &amp; Decision Analytics</p>
+                <p class="text-gray-400 text-xs mb-3">Aug 2024 – May 2026 (Expected)</p>
+                <span class="metric-badge"><i class="fas fa-star text-xs mr-1"></i>GPA: 4.0 / 4.0</span>
+            </div>
+            <div class="bento-card p-8">
+                <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-4"><i class="fas fa-graduation-cap text-xl"></i></div>
+                <h3 class="text-lg font-extrabold text-gray-900 mb-1">B.Tech in Information Technology</h3>
+                <p class="text-emerald-600 text-sm font-bold mb-1">Anna University</p>
+                <p class="text-gray-500 text-sm mb-1">Information Technology</p>
+                <p class="text-gray-400 text-xs mb-3">2009 – 2013</p>
+                <span class="metric-badge"><i class="fas fa-medal text-xs mr-1"></i>GPA: 3.6 / 4.0 · Gold Medalist</span>
+            </div>
+        </div>
+        <div class="bento-card p-8 reveal delay-3">
+            <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-4"><i class="fas fa-award text-xl"></i></div>
+            <h3 class="text-lg font-extrabold text-gray-900 mb-5">Certifications &amp; Awards</h3>
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-certificate text-emerald-500 text-xs"></i>Machine Learning Specialization — DeepLearning.AI</div>
+                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-certificate text-emerald-500 text-xs"></i>Deep Learning Specialization — DeepLearning.AI</div>
+                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-certificate text-emerald-500 text-xs"></i>Generative AI with AWS — Amazon Web Services</div>
+                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-trophy text-emerald-500 text-xs"></i>CIO Recognition — NM DOIT (RAG chatbot cutting triage by 70% &amp; Power BI dashboard)</div>
+                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-trophy text-emerald-500 text-xs"></i>CFO Recognition — BNSF Railway ($1M+ savings)</div>
+                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-trophy text-emerald-500 text-xs"></i>Insta Award — Infosys (ML Engineering Impact)</div>
+                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-medal text-emerald-500 text-xs"></i>Gold Medalist — Anna University</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<footer id="contact" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-4 reveal">Get In Touch</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 reveal delay-1">Let's build something<br>remarkable together.</h2>
+        <p class="text-gray-500 mb-12 max-w-xl mx-auto reveal delay-2">Open to Senior Data Scientist, Agentic AI Engineer, and ML Engineer roles — particularly in rail, freight, logistics, and supply-chain domains where I have 6+ years of context.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 reveal delay-2">
+            <a href="mailto:vjayapr1@asu.edu" class="bento-card px-8 py-4 hover:border-emerald-400 transition flex items-center gap-3 text-gray-700 track-contact" data-label="email_footer">
+                <i class="fas fa-envelope text-emerald-600"></i> vjayapr1@asu.edu
+            </a>
+            <a href="https://linkedin.com/in/vigneshwari31" target="_blank" class="bento-card px-8 py-4 hover:border-emerald-400 transition flex items-center gap-3 text-gray-700 track-social" data-label="linkedin_footer">
+                <i class="fab fa-linkedin text-emerald-600"></i> LinkedIn
+            </a>
+        </div>
+        <div class="flex justify-center gap-4 mb-14 reveal delay-3">
+            <a href="https://github.com/vigneshwarijayaprakash" target="_blank" class="w-12 h-12 bento-card flex items-center justify-center hover:border-emerald-400 transition text-gray-600 track-github">
+                <i class="fab fa-github text-lg"></i>
+            </a>
+            <a href="Vigneshwari_Jayaprakash_Resume.pdf" download class="bento-card px-6 h-12 flex items-center justify-center gap-2 hover:border-emerald-400 transition text-gray-600 text-sm font-bold track-resume">
+                <i class="fas fa-file-pdf text-emerald-600"></i> Download Resume
+            </a>
+        </div>
+        <div class="border-t border-emerald-100 pt-8">
+            <p class="text-gray-400 text-xs uppercase tracking-[0.3em] font-bold">Vigneshwari Jayaprakash &copy; 2026 &nbsp;·&nbsp; Data Scientist · Agentic AI · Ex-BNSF</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+    const s = document.documentElement.scrollTop;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = `scaleX(${s / h})`;
+});
+const btn = document.getElementById('mobile-menu-btn');
+const closeBtn = document.getElementById('close-menu');
+const menu = document.getElementById('mobile-menu');
+btn.addEventListener('click', () => menu.classList.add('active'));
+closeBtn.addEventListener('click', () => menu.classList.remove('active'));
+document.querySelectorAll('.menu-link').forEach(l => l.addEventListener('click', () => menu.classList.remove('active')));
+document.querySelectorAll('.exp-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.exp-pane').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+    });
+});
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+document.querySelectorAll('a[href*="Resume.pdf"], .track-resume').forEach(a => {
+    a.addEventListener('click', () => gtag('event', 'resume_download', { event_category: 'engagement', event_label: 'resume_pdf' }));
+});
+document.querySelectorAll('a[href*="github.com"], .track-github').forEach(a => {
+    a.addEventListener('click', () => gtag('event', 'github_click', { event_category: 'engagement', event_label: a.href || 'github' }));
+});
+document.querySelectorAll('.project-card[data-project]').forEach(card => {
+    card.addEventListener('click', () => gtag('event', 'project_view', { event_category: 'portfolio', event_label: card.dataset.project }));
+});
+document.querySelectorAll('.track-contact').forEach(a => {
+    a.addEventListener('click', () => gtag('event', 'contact_click', { event_category: 'engagement', event_label: a.dataset.label || 'contact' }));
+});
+document.querySelectorAll('.track-social').forEach(a => {
+    a.addEventListener('click', () => gtag('event', 'social_click', { event_category: 'engagement', event_label: a.dataset.label || 'linkedin' }));
+});
+const depths = { 25: false, 50: false, 75: false, 100: false };
+window.addEventListener('scroll', () => {
+    const scrollPct = Math.round((document.documentElement.scrollTop / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+    [25, 50, 75, 100].forEach(d => {
+        if (scrollPct >= d && !depths[d]) { depths[d] = true; gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: `${d}%` }); }
+    });
+});
+</script>
+</body>
+</html>
