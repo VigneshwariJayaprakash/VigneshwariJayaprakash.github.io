@@ -75,7 +75,6 @@
         .mobile-menu.active { transform: translateX(0); }
         .section-alt { background-color: #f0f7f2; }
 
-        /* Highlight badge for BNSF */
         .domain-badge {
             background: linear-gradient(135deg, #047857, #065f46);
             color: white;
@@ -91,7 +90,6 @@
             box-shadow: 0 2px 8px rgba(4,120,87,0.25);
         }
 
-        /* Experience tabs */
         .exp-tab { cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent; }
         .exp-tab:hover { background: rgba(16,185,129,0.05); color: #047857; }
         .exp-tab.active { border-left-color: #059669; background: rgba(16,185,129,0.07); color: #047857; }
@@ -99,25 +97,14 @@
         .exp-pane.active { display: block; animation: fadeIn 0.35s ease; }
         @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 
-        /* Scroll reveal */
         .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
         .reveal.visible { opacity: 1; transform: none; }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
-        /* Progress bar */
         #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg,#059669,#34d399); z-index: 9999; transform-origin: left; transform: scaleX(0); transition: transform 0.1s; }
 
-        /* Project card */
-        .project-card { position: relative; overflow: hidden; }
-        .project-card .overlay-link {
-            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-            background: rgba(5,150,105,0.85); opacity: 0; transition: opacity 0.3s; border-radius: 24px;
-        }
-        .project-card:hover .overlay-link { opacity: 1; }
-
-        /* In-progress badge */
         .in-progress-badge {
             background: linear-gradient(135deg, #f59e0b, #d97706);
             color: white;
@@ -144,80 +131,167 @@
             50% { opacity: 0.5; transform: scale(0.7); }
         }
 
-        /* SentinelRAG visual */
-        .sentinel-visual {
-            background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 70%, #059669 100%);
+        /* ── PROJECT TILES ── */
+        .proj-tab {
+            padding: 0.55rem 1.4rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 1px solid rgba(16,185,129,0.25);
+            background: rgba(255,255,255,0.8);
+            color: #6b7280;
+            transition: all 0.22s;
+        }
+        .proj-tab:hover { border-color: rgba(16,185,129,0.5); color: #047857; }
+        .proj-tab.active { background: #059669; color: #fff; border-color: #059669; box-shadow: 0 4px 12px rgba(5,150,105,0.25); }
+
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 900px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 580px) { .proj-grid { grid-template-columns: 1fr; } }
+
+        .proj-tile {
+            background: rgba(255,255,255,0.88);
+            border: 1px solid rgba(16,185,129,0.15);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            animation: tileIn 0.32s ease both;
+        }
+        .proj-tile:hover {
+            border-color: rgba(16,185,129,0.45);
+            transform: translateY(-6px);
+            background: rgba(255,255,255,0.97);
+            box-shadow: 0 16px 40px rgba(16,185,129,0.12);
+        }
+        .proj-tile.hidden { display: none; }
+        @keyframes tileIn {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        .proj-tile-img {
+            width: 100%; height: 190px; object-fit: cover; display: block; flex-shrink: 0;
+        }
+
+        .proj-tile-visual {
+            width: 100%; height: 190px; flex-shrink: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
         }
-        .sentinel-visual::before {
-            content: ''; position: absolute; inset: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(52,211,153,0.12) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(16,185,129,0.1) 0%, transparent 40%),
-                radial-gradient(circle at 60% 80%, rgba(6,95,70,0.3) 0%, transparent 50%);
-        }
-        .sentinel-grid {
+        .proj-tile-visual .vis-grid {
             position: absolute; inset: 0;
             background-image:
-                linear-gradient(rgba(52,211,153,0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(52,211,153,0.07) 1px, transparent 1px);
-            background-size: 28px 28px;
+                linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-        .sentinel-node {
-            position: absolute; border-radius: 50%;
-            background: rgba(52,211,153,0.25);
-            border: 1px solid rgba(52,211,153,0.5);
-            animation: node-pulse 3s ease-in-out infinite;
+        .proj-tile-visual .vis-glow {
+            position: absolute; border-radius: 50%; filter: blur(24px); opacity: 0.35;
         }
+        .proj-tile-visual .vis-content { position: relative; z-index: 2; text-align: center; }
+        .proj-tile-visual .vis-icon-box {
+            width: 54px; height: 54px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;
+        }
+        .proj-tile-visual .vis-icon-box i { font-size: 1.6rem; }
+        .proj-tile-visual .vis-name { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px; }
+        .proj-tile-visual .vis-sub { font-size: 0.6rem; font-family: 'Fira Code', monospace; opacity: 0.65; }
+        .proj-tile-visual .vis-bars { display: flex; align-items: flex-end; gap: 3px; margin-top: 12px; height: 24px; }
+        .proj-tile-visual .vis-bar { width: 5px; border-radius: 2px 2px 0 0; }
+
+        /* Sentinel green */
+        .vis-sentinel { background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%); }
+        .vis-sentinel .vis-icon-box { background: rgba(52,211,153,0.2); border: 1px solid rgba(52,211,153,0.4); }
+        .vis-sentinel .vis-icon-box i { color: #6ee7b7; }
+        .vis-sentinel .vis-name { color: #a7f3d0; }
+        .vis-sentinel .vis-sub { color: #6ee7b7; }
+        .vis-sentinel .vis-bar { background: rgba(52,211,153,0.55); }
+        .vis-sentinel .vis-bar:nth-child(4) { background: rgba(52,211,153,0.9); }
+        .vis-sentinel .vis-glow { background: #34d399; width: 120px; height: 120px; top: -30px; right: -20px; }
+
+        /* Supply chain blue */
+        .vis-supply { background: linear-gradient(135deg, #1e3a5f 0%, #1565a0 60%, #1976d2 100%); }
+        .vis-supply .vis-icon-box { background: rgba(100,181,246,0.2); border: 1px solid rgba(100,181,246,0.4); }
+        .vis-supply .vis-icon-box i { color: #93c5fd; }
+        .vis-supply .vis-name { color: #bae6fd; }
+        .vis-supply .vis-sub { color: #93c5fd; }
+        .vis-supply .vis-bar { background: rgba(100,181,246,0.5); }
+        .vis-supply .vis-bar:nth-child(4) { background: rgba(100,181,246,0.9); }
+        .vis-supply .vis-glow { background: #60a5fa; width: 120px; height: 120px; top: -30px; left: -20px; }
+
+        /* Recommender purple */
+        .vis-rec { background: linear-gradient(135deg, #2d1b69 0%, #4c3494 60%, #6d4bba 100%); }
+        .vis-rec .vis-icon-box { background: rgba(139,92,246,0.25); border: 1px solid rgba(139,92,246,0.45); }
+        .vis-rec .vis-icon-box i { color: #c4b5fd; }
+        .vis-rec .vis-name { color: #ddd6fe; }
+        .vis-rec .vis-sub { color: #c4b5fd; }
+        .vis-rec .vis-bar { background: rgba(139,92,246,0.55); }
+        .vis-rec .vis-bar:nth-child(4) { background: rgba(167,139,250,0.9); }
+        .vis-rec .vis-glow { background: #8b5cf6; width: 120px; height: 120px; bottom: -30px; right: -10px; }
+
+        .proj-tile-body { padding: 1.25rem 1.4rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
+
+        .proj-tile-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
+        .proj-tile-pill {
+            font-size: 0.7rem; padding: 3px 9px; border-radius: 9999px;
+            background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.22); color: #047857; font-weight: 600;
+        }
+        .proj-tile-pill.purple { background: rgba(139,92,246,0.07); border-color: rgba(139,92,246,0.25); color: #6d28d9; }
+        .proj-tile-pill.blue   { background: rgba(30,136,229,0.07);  border-color: rgba(30,136,229,0.25);  color: #1565a0; }
+
+        .proj-tile-title { font-size: 0.95rem; font-weight: 800; color: #111827; margin-bottom: 0.5rem; line-height: 1.35; }
+        .proj-tile-desc  { font-size: 0.78rem; line-height: 1.65; color: #6b7280; margin-bottom: 0.85rem; flex: 1; }
+
+        .proj-tile-metrics { display: flex; flex-wrap: wrap; gap: 5px; }
+        .proj-tile-metric {
+            font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 5px;
+            background: rgba(16,185,129,0.09); border: 1px solid rgba(16,185,129,0.28); color: #047857;
+        }
+        .proj-tile-metric.purple { background: rgba(109,75,186,0.09); border-color: rgba(109,75,186,0.28); color: #5b21b6; }
+        .proj-tile-metric.blue   { background: rgba(30,136,229,0.09);  border-color: rgba(30,136,229,0.28);  color: #1565a0; }
+
+        .proj-tile-overlay {
+            position: absolute; inset: 0; border-radius: 24px;
+            background: rgba(5,150,105,0.87);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.28s; pointer-events: none;
+        }
+        .proj-tile:hover .proj-tile-overlay { opacity: 1; pointer-events: auto; }
+        .proj-tile-overlay a {
+            background: #fff; color: #047857; font-weight: 800; font-size: 0.78rem;
+            padding: 0.6rem 1.4rem; border-radius: 9999px; text-decoration: none;
+            letter-spacing: 0.05em; transition: transform 0.15s;
+        }
+        .proj-tile-overlay a:hover { transform: scale(1.04); }
+
+        /* Sentinel scan animation */
+        .sentinel-line {
+            position: absolute; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(52,211,153,0.5), transparent);
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0%   { top: 0%; opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* node-pulse reused */
         @keyframes node-pulse {
             0%, 100% { transform: scale(1); opacity: 0.7; }
             50% { transform: scale(1.15); opacity: 1; }
-        }
-        .sentinel-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(52,211,153,0.4), transparent);
-            height: 1px;
-            animation: scan-line 4s linear infinite;
-        }
-        @keyframes scan-line {
-            0% { transform: translateY(-100px); opacity: 0; }
-            10% { opacity: 1; } 90% { opacity: 1; }
-            100% { transform: translateY(300px); opacity: 0; }
-        }
-
-        /* AMAT supply chain visual */
-        .amat-visual {
-            background: linear-gradient(135deg, #1e3a5f 0%, #1a4f7a 40%, #1565a0 70%, #1976d2 100%);
-            position: relative; overflow: hidden;
-        }
-        .amat-visual::before {
-            content: ''; position: absolute; inset: 0;
-            background-image:
-                radial-gradient(circle at 25% 40%, rgba(100,181,246,0.15) 0%, transparent 50%),
-                radial-gradient(circle at 75% 70%, rgba(30,136,229,0.1) 0%, transparent 40%);
-        }
-        .amat-grid {
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(100,181,246,0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(100,181,246,0.08) 1px, transparent 1px);
-            background-size: 28px 28px;
-        }
-        .amat-bar {
-            display: inline-block;
-            background: rgba(100,181,246,0.5);
-            border-radius: 2px;
-            animation: bar-grow 2s ease-in-out infinite alternate;
-        }
-        @keyframes bar-grow {
-            from { opacity: 0.5; transform: scaleY(0.85); }
-            to   { opacity: 1;   transform: scaleY(1); }
-        }
-        .amat-node {
-            position: absolute; border-radius: 50%;
-            background: rgba(100,181,246,0.2);
-            border: 1px solid rgba(100,181,246,0.4);
-            animation: node-pulse 3.5s ease-in-out infinite;
         }
     </style>
 </head>
@@ -225,7 +299,7 @@
 
 <div id="progress-bar"></div>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav class="fixed w-full z-50 px-6 py-4">
     <div class="max-w-6xl mx-auto bento-card px-8 py-3 flex justify-between items-center">
         <div class="text-xl font-bold text-emerald-700 tracking-tighter">VJ.</div>
@@ -260,7 +334,7 @@
     </div>
 </div>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section id="hero" class="min-h-screen flex items-center justify-center pt-24 px-6">
     <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
         <div class="order-2 md:order-1 reveal">
@@ -321,7 +395,7 @@
     </div>
 </section>
 
-<!-- ── STATS ── -->
+<!-- STATS -->
 <section class="py-14 px-6">
     <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="bento-card p-7 text-center reveal">
@@ -343,7 +417,7 @@
     </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section id="about" class="py-24 px-6 section-alt">
     <div class="max-w-5xl mx-auto">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">About</p>
@@ -388,166 +462,73 @@
     </div>
 </section>
 
-<!-- ── SKILLS ── -->
+<!-- SKILLS -->
 <section id="skills" class="py-24 px-6">
     <div class="max-w-6xl mx-auto">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Capabilities</p>
         <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">Technical Skills</h2>
-
         <div class="grid md:grid-cols-3 gap-6">
-
-            <!-- 1. Agentic AI & LLM (Highlighted) -->
-            <div class="bento-card p-9 flex flex-col items-center text-center reveal"
-                 style="border-color: rgba(16,185,129,0.4);">
-
-                <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl shadow-[0_0_20px_rgba(16,185,129,0.15)]">
-                    <i class="fas fa-robot"></i>
-                </div>
-
-                <h3 class="text-lg font-bold text-gray-900 mb-3">
-                    Agentic AI & LLM Architecture
-                </h3>
-
-                <p class="text-gray-500 text-xs leading-relaxed mb-5 max-w-xs">
-                    End-to-end agentic systems, multi-step reasoning, RAG pipelines, transformer internals, 
-                    fine-tuning (LoRA/QLoRA), and production LLM deployment.
-                </p>
-
+            <div class="bento-card p-9 flex flex-col items-center text-center reveal" style="border-color: rgba(16,185,129,0.4);">
+                <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl shadow-[0_0_20px_rgba(16,185,129,0.15)]"><i class="fas fa-robot"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Agentic AI & LLM Architecture</h3>
+                <p class="text-gray-500 text-xs leading-relaxed mb-5 max-w-xs">End-to-end agentic systems, multi-step reasoning, RAG pipelines, transformer internals, fine-tuning (LoRA/QLoRA), and production LLM deployment.</p>
                 <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-pill">LangGraph</span>
-                    <span class="skill-pill">LangChain</span>
-                    <span class="skill-pill">RAG</span>
-                    <span class="skill-pill">FAISS</span>
-                    <span class="skill-pill">ChromaDB</span>
-                    <span class="skill-pill">Transformers</span>
-                    <span class="skill-pill">LoRA / QLoRA</span>
-                    <span class="skill-pill">Hugging Face</span>
-                    <span class="skill-pill">Embeddings</span>
-                    <span class="skill-pill">vLLM / Ollama</span>
+                    <span class="skill-pill">LangGraph</span><span class="skill-pill">LangChain</span><span class="skill-pill">RAG</span>
+                    <span class="skill-pill">FAISS</span><span class="skill-pill">ChromaDB</span><span class="skill-pill">Transformers</span>
+                    <span class="skill-pill">LoRA / QLoRA</span><span class="skill-pill">Hugging Face</span>
+                    <span class="skill-pill">Embeddings</span><span class="skill-pill">vLLM / Ollama</span>
                 </div>
             </div>
-
-            <!-- 2. ML & Optimization -->
             <div class="bento-card p-9 flex flex-col items-center text-center reveal">
-                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
-                    <i class="fas fa-brain"></i>
-                </div>
-
-                <h3 class="text-lg font-bold text-gray-900 mb-3">
-                    ML, Forecasting & Optimization
-                </h3>
-
-                <p class="text-gray-500 text-xs mb-5">
-                    Predictive modeling, anomaly detection, time-series forecasting, and optimization in production environments.
-                </p>
-
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl"><i class="fas fa-brain"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">ML, Forecasting & Optimization</h3>
+                <p class="text-gray-500 text-xs mb-5">Predictive modeling, anomaly detection, time-series forecasting, and optimization in production environments.</p>
                 <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-pill">XGBoost</span>
-                    <span class="skill-pill">ARIMA</span>
-                    <span class="skill-pill">PyTorch</span>
-                    <span class="skill-pill">Scikit-learn</span>
-                    <span class="skill-pill">SHAP</span>
-                    <span class="skill-pill">OR-Tools</span>
+                    <span class="skill-pill">XGBoost</span><span class="skill-pill">ARIMA</span><span class="skill-pill">PyTorch</span>
+                    <span class="skill-pill">Scikit-learn</span><span class="skill-pill">SHAP</span><span class="skill-pill">OR-Tools</span>
                 </div>
             </div>
-
-            <!-- 3. MLOps -->
             <div class="bento-card p-9 flex flex-col items-center text-center reveal">
-                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
-                    <i class="fas fa-server"></i>
-                </div>
-
-                <h3 class="text-lg font-bold text-gray-900 mb-3">
-                    MLOps & Engineering
-                </h3>
-
-                <p class="text-gray-500 text-xs mb-5">
-                    End-to-end ML lifecycle, experiment tracking, pipelines, and scalable deployment.
-                </p>
-
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl"><i class="fas fa-server"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">MLOps & Engineering</h3>
+                <p class="text-gray-500 text-xs mb-5">End-to-end ML lifecycle, experiment tracking, pipelines, and scalable deployment.</p>
                 <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-pill">MLflow</span>
-                    <span class="skill-pill">Airflow</span>
-                    <span class="skill-pill">Docker</span>
-                    <span class="skill-pill">Kubernetes</span>
-                    <span class="skill-pill">CI/CD</span>
-                    <span class="skill-pill">AWS</span>
+                    <span class="skill-pill">MLflow</span><span class="skill-pill">Airflow</span><span class="skill-pill">Docker</span>
+                    <span class="skill-pill">Kubernetes</span><span class="skill-pill">CI/CD</span><span class="skill-pill">AWS</span>
                 </div>
             </div>
-
-            <!-- 4. Data Engineering -->
             <div class="bento-card p-9 flex flex-col items-center text-center reveal">
-                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
-                    <i class="fas fa-database"></i>
-                </div>
-
-                <h3 class="text-lg font-bold text-gray-900 mb-3">
-                    Data Engineering
-                </h3>
-
-                <p class="text-gray-500 text-xs mb-5">
-                    Distributed pipelines, real-time data systems, and large-scale ETL processing.
-                </p>
-
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl"><i class="fas fa-database"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Data Engineering</h3>
+                <p class="text-gray-500 text-xs mb-5">Distributed pipelines, real-time data systems, and large-scale ETL processing.</p>
                 <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-pill">Python</span>
-                    <span class="skill-pill">SQL</span>
-                    <span class="skill-pill">PySpark</span>
-                    <span class="skill-pill">Kafka</span>
-                    <span class="skill-pill">Hadoop</span>
+                    <span class="skill-pill">Python</span><span class="skill-pill">SQL</span><span class="skill-pill">PySpark</span>
+                    <span class="skill-pill">Kafka</span><span class="skill-pill">Hadoop</span>
                 </div>
             </div>
-
-            <!-- 5. Analytics -->
             <div class="bento-card p-9 flex flex-col items-center text-center reveal">
-                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
-                    <i class="fas fa-chart-bar"></i>
-                </div>
-
-                <h3 class="text-lg font-bold text-gray-900 mb-3">
-                    Analytics & BI
-                </h3>
-
-                <p class="text-gray-500 text-xs mb-5">
-                    Statistical analysis, dashboards, and data storytelling for business decisions.
-                </p>
-
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl"><i class="fas fa-chart-bar"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Analytics & BI</h3>
+                <p class="text-gray-500 text-xs mb-5">Statistical analysis, dashboards, and data storytelling for business decisions.</p>
                 <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-pill">Tableau</span>
-                    <span class="skill-pill">Power BI</span>
-                    <span class="skill-pill">A/B Testing</span>
-                    <span class="skill-pill">EDA</span>
+                    <span class="skill-pill">Tableau</span><span class="skill-pill">Power BI</span>
+                    <span class="skill-pill">A/B Testing</span><span class="skill-pill">EDA</span>
                 </div>
             </div>
-
-            <!-- 6. Cloud -->
             <div class="bento-card p-9 flex flex-col items-center text-center reveal">
-                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl">
-                    <i class="fas fa-cloud"></i>
-                </div>
-
-                <h3 class="text-lg font-bold text-gray-900 mb-3">
-                    Cloud & Infrastructure
-                </h3>
-
-                <p class="text-gray-500 text-xs mb-5">
-                    Cloud-native ML systems, serverless architecture, and scalable infrastructure.
-                </p>
-
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-5 text-2xl"><i class="fas fa-cloud"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Cloud & Infrastructure</h3>
+                <p class="text-gray-500 text-xs mb-5">Cloud-native ML systems, serverless architecture, and scalable infrastructure.</p>
                 <div class="flex flex-wrap gap-2 justify-center">
-                    <span class="skill-pill">AWS</span>
-                    <span class="skill-pill">SageMaker</span>
-                    <span class="skill-pill">Lambda</span>
-                    <span class="skill-pill">Kubernetes</span>
-                    <span class="skill-pill">Docker</span>
+                    <span class="skill-pill">AWS</span><span class="skill-pill">SageMaker</span><span class="skill-pill">Lambda</span>
+                    <span class="skill-pill">Kubernetes</span><span class="skill-pill">Docker</span>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
-<!-- ── EXPERIENCE ── -->
+<!-- EXPERIENCE -->
 <section id="experience" class="py-24 px-6 section-alt">
     <div class="max-w-5xl mx-auto">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Career</p>
@@ -577,8 +558,6 @@
                     </button>
                 </div>
                 <div class="flex-1 p-8">
-
-                    <!-- NM DOIT pane -->
                     <div class="exp-pane active" id="pane-nm">
                         <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
                             <div>
@@ -603,8 +582,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- BNSF Tech Analyst pane (REFRAMED — BNSF lead) -->
                     <div class="exp-pane" id="pane-ta">
                         <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
                             <div>
@@ -629,8 +606,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- BNSF Data Scientist pane (REFRAMED) -->
                     <div class="exp-pane" id="pane-sr">
                         <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
                             <div>
@@ -642,20 +617,18 @@
                         <div class="space-y-5">
                             <div class="border-l-2 border-emerald-200 pl-4">
                                 <p class="text-sm font-semibold text-gray-800 mb-1">Predictive Maintenance Optimization for BNSF Locomotive Fleet</p>
-                                <p class="text-gray-500 text-sm leading-relaxed">Designed time-series predictive maintenance and maintenance-scheduling optimization models for <span class="metric-badge">500+ BNSF locomotives</span>, reducing unplanned downtime by <span class="metric-badge">25%</span> and saving an estimated <span class="metric-badge">$400K annually</span> across the freight network.</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Designed time-series predictive maintenance and maintenance-scheduling optimization models for <span class="metric-badge">500+ BNSF locomotives</span>, reducing unplanned downtime by <span class="metric-badge">25%</span> and saving an estimated <span class="metric-badge">$400K annually</span>.</p>
                             </div>
                             <div class="border-l-2 border-emerald-200 pl-4">
                                 <p class="text-sm font-semibold text-gray-800 mb-1">Distributed ETL at Rail-Network Scale</p>
-                                <p class="text-gray-500 text-sm leading-relaxed">Orchestrated <span class="metric-badge">PySpark + Hadoop</span> ETL handling <span class="metric-badge">5TB+ daily ingestion</span> from BNSF telemetry and operational systems at 99.9% uptime, powering Tableau &amp; Power BI dashboards for 10+ stakeholders across operations and finance.</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Orchestrated <span class="metric-badge">PySpark + Hadoop</span> ETL handling <span class="metric-badge">5TB+ daily ingestion</span> from BNSF telemetry and operational systems at 99.9% uptime, powering Tableau &amp; Power BI dashboards for 10+ stakeholders.</p>
                             </div>
                             <div class="border-l-2 border-emerald-200 pl-4">
                                 <p class="text-sm font-semibold text-gray-800 mb-1">MLflow &amp; ML Lifecycle Standardization</p>
-                                <p class="text-gray-500 text-sm leading-relaxed">Implemented <span class="metric-badge">MLflow</span> experiment tracking and versioning, cutting deployment time by <span class="metric-badge">35%</span> and standardizing the ML lifecycle across a 6-person team embedded with BNSF.</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Implemented <span class="metric-badge">MLflow</span> experiment tracking and versioning, cutting deployment time by <span class="metric-badge">35%</span> and standardizing the ML lifecycle across a 6-person team.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- BNSF Software Engineer pane (REFRAMED senior) -->
                     <div class="exp-pane" id="pane-ds">
                         <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
                             <div>
@@ -671,16 +644,14 @@
                             </div>
                             <div class="border-l-2 border-emerald-200 pl-4">
                                 <p class="text-sm font-semibold text-gray-800 mb-1">Automated Data Validation &amp; Quality Frameworks</p>
-                                <p class="text-gray-500 text-sm leading-relaxed">Built automated validation and quality monitoring frameworks across 3 production BNSF pipelines, reducing data defect rates by <span class="metric-badge">45%</span> — establishing the foundation that later ML systems were deployed on top of.</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Built automated validation and quality monitoring frameworks across 3 production BNSF pipelines, reducing data defect rates by <span class="metric-badge">45%</span>.</p>
                             </div>
                             <div class="border-l-2 border-emerald-200 pl-4">
                                 <p class="text-sm font-semibold text-gray-800 mb-1">Cross-Functional Software &amp; SQL Engineering</p>
-                                <p class="text-gray-500 text-sm leading-relaxed">Production-quality coding in <span class="metric-badge">Java</span>, <span class="metric-badge">Python</span>, and <span class="metric-badge">SQL</span>, integrating enterprise platforms via APIs and web services. Delivered through CI/CD pipelines and formal change-control rigor consistent with regulated rail operations.</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Production-quality coding in <span class="metric-badge">Java</span>, <span class="metric-badge">Python</span>, and <span class="metric-badge">SQL</span>, integrating enterprise platforms via APIs and web services through CI/CD pipelines.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Independent Research pane -->
                     <div class="exp-pane" id="pane-research">
                         <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
                             <div>
@@ -701,460 +672,197 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<div class="flex justify-center gap-4 mb-10">
-    <button class="proj-tab active" data-tab="all">All</button>
-    <button class="proj-tab" data-tab="ml">Machine Learning</button>
-    <button class="proj-tab" data-tab="agentic">Agentic AI</button>
-</div>
-
-<!-- ── PROJECTS SECTION (drop-in replacement) ── -->
-<!-- Replace everything from the proj-tab buttons div through the end of the old projects section -->
-
-<style>
-  /* Tab buttons */
-  .proj-tab {
-    padding: 0.55rem 1.4rem;
-    border-radius: 9999px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: 1px solid rgba(16,185,129,0.25);
-    background: rgba(255,255,255,0.8);
-    color: #6b7280;
-    transition: all 0.22s;
-  }
-  .proj-tab:hover {
-    border-color: rgba(16,185,129,0.5);
-    color: #047857;
-  }
-  .proj-tab.active {
-    background: #059669;
-    color: #fff;
-    border-color: #059669;
-    box-shadow: 0 4px 12px rgba(5,150,105,0.25);
-  }
-
-  /* Tile grid */
-  .proj-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  @media (max-width: 900px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 580px) { .proj-grid { grid-template-columns: 1fr; } }
-
-  /* Project tile card */
-  .proj-tile {
-    background: rgba(255,255,255,0.88);
-    border: 1px solid rgba(16,185,129,0.15);
-    border-radius: 24px;
-    overflow: hidden;
-    transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    position: relative;
-  }
-  .proj-tile:hover {
-    border-color: rgba(16,185,129,0.45);
-    transform: translateY(-6px);
-    background: rgba(255,255,255,0.97);
-    box-shadow: 0 16px 40px rgba(16,185,129,0.12);
-  }
-
-  /* Tile image / visual area */
-  .proj-tile-img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    display: block;
-    flex-shrink: 0;
-  }
-
-  /* Agentic AI tiles get a custom gradient visual instead of image */
-  .proj-tile-visual {
-    width: 100%;
-    height: 190px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .proj-tile-visual .vis-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-  .proj-tile-visual .vis-glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(24px);
-    opacity: 0.35;
-  }
-  .proj-tile-visual .vis-content { position: relative; z-index: 2; text-align: center; }
-  .proj-tile-visual .vis-icon-box {
-    width: 54px; height: 54px; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 10px;
-  }
-  .proj-tile-visual .vis-icon-box i { font-size: 1.6rem; }
-  .proj-tile-visual .vis-name {
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; margin-bottom: 4px;
-  }
-  .proj-tile-visual .vis-sub { font-size: 0.6rem; font-family: 'Fira Code', monospace; opacity: 0.65; }
-  .proj-tile-visual .vis-bars {
-    display: flex; align-items: flex-end; gap: 3px; margin-top: 12px; height: 24px;
-  }
-  .proj-tile-visual .vis-bar { width: 5px; border-radius: 2px 2px 0 0; }
-
-  /* Sentinel green theme */
-  .vis-sentinel { background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%); }
-  .vis-sentinel .vis-icon-box { background: rgba(52,211,153,0.2); border: 1px solid rgba(52,211,153,0.4); }
-  .vis-sentinel .vis-icon-box i { color: #6ee7b7; }
-  .vis-sentinel .vis-name { color: #a7f3d0; }
-  .vis-sentinel .vis-sub { color: #6ee7b7; }
-  .vis-sentinel .vis-bar { background: rgba(52,211,153,0.55); }
-  .vis-sentinel .vis-bar:nth-child(4) { background: rgba(52,211,153,0.9); }
-  .vis-sentinel .vis-glow { background: #34d399; width: 120px; height: 120px; top: -30px; right: -20px; }
-
-  /* Supply chain blue theme */
-  .vis-supply { background: linear-gradient(135deg, #1e3a5f 0%, #1565a0 60%, #1976d2 100%); }
-  .vis-supply .vis-icon-box { background: rgba(100,181,246,0.2); border: 1px solid rgba(100,181,246,0.4); }
-  .vis-supply .vis-icon-box i { color: #93c5fd; }
-  .vis-supply .vis-name { color: #bae6fd; }
-  .vis-supply .vis-sub { color: #93c5fd; }
-  .vis-supply .vis-bar { background: rgba(100,181,246,0.5); }
-  .vis-supply .vis-bar:nth-child(4) { background: rgba(100,181,246,0.9); }
-  .vis-supply .vis-glow { background: #60a5fa; width: 120px; height: 120px; top: -30px; left: -20px; }
-
-  /* Recommender purple theme */
-  .vis-rec { background: linear-gradient(135deg, #2d1b69 0%, #4c3494 60%, #6d4bba 100%); }
-  .vis-rec .vis-icon-box { background: rgba(139,92,246,0.25); border: 1px solid rgba(139,92,246,0.45); }
-  .vis-rec .vis-icon-box i { color: #c4b5fd; }
-  .vis-rec .vis-name { color: #ddd6fe; }
-  .vis-rec .vis-sub { color: #c4b5fd; }
-  .vis-rec .vis-bar { background: rgba(139,92,246,0.55); }
-  .vis-rec .vis-bar:nth-child(4) { background: rgba(167,139,250,0.9); }
-  .vis-rec .vis-glow { background: #8b5cf6; width: 120px; height: 120px; bottom: -30px; right: -10px; }
-
-  /* Tile body */
-  .proj-tile-body { padding: 1.25rem 1.4rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
-
-  .proj-tile-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
-  .proj-tile-pill {
-    font-size: 0.7rem; padding: 3px 9px; border-radius: 9999px;
-    background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.22); color: #047857;
-    font-weight: 600;
-  }
-  .proj-tile-pill.purple { background: rgba(139,92,246,0.07); border-color: rgba(139,92,246,0.25); color: #6d28d9; }
-  .proj-tile-pill.blue   { background: rgba(30,136,229,0.07);  border-color: rgba(30,136,229,0.25);  color: #1565a0; }
-
-  .proj-tile-title {
-    font-size: 0.95rem; font-weight: 800; color: #111827;
-    margin-bottom: 0.5rem; line-height: 1.35;
-  }
-  .proj-tile-desc {
-    font-size: 0.78rem; line-height: 1.65; color: #6b7280;
-    margin-bottom: 0.85rem; flex: 1;
-  }
-
-  .proj-tile-metrics { display: flex; flex-wrap: wrap; gap: 5px; }
-  .proj-tile-metric {
-    font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 5px;
-    background: rgba(16,185,129,0.09); border: 1px solid rgba(16,185,129,0.28); color: #047857;
-  }
-  .proj-tile-metric.purple { background: rgba(109,75,186,0.09); border-color: rgba(109,75,186,0.28); color: #5b21b6; }
-  .proj-tile-metric.blue   { background: rgba(30,136,229,0.09);  border-color: rgba(30,136,229,0.28);  color: #1565a0; }
-
-  /* GitHub hover overlay */
-  .proj-tile-overlay {
-    position: absolute; inset: 0; border-radius: 24px;
-    background: rgba(5,150,105,0.87);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.28s;
-    pointer-events: none;
-  }
-  .proj-tile:hover .proj-tile-overlay { opacity: 1; pointer-events: auto; }
-  .proj-tile-overlay a {
-    background: #fff; color: #047857; font-weight: 800; font-size: 0.78rem;
-    padding: 0.6rem 1.4rem; border-radius: 9999px; text-decoration: none;
-    letter-spacing: 0.05em; transition: transform 0.15s;
-  }
-  .proj-tile-overlay a:hover { transform: scale(1.04); }
-
-  /* Filter animation */
-  .proj-tile { animation: tileIn 0.32s ease both; }
-  .proj-tile.hidden { display: none; }
-  @keyframes tileIn {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: none; }
-  }
-
-  /* Category sub-label */
-  .proj-category-label {
-    display: flex; align-items: center; gap: 12px;
-    font-size: 0.65rem; font-weight: 700; color: #059669;
-    text-transform: uppercase; letter-spacing: 0.18em;
-    margin-bottom: 1.25rem; margin-top: 0.5rem;
-  }
-  .proj-category-label::before,
-  .proj-category-label::after {
-    content: ''; flex: 1; height: 1px; background: rgba(16,185,129,0.2);
-  }
-</style>
-
-<!-- ── TAB BAR ── -->
-<div class="flex justify-center gap-3 mb-10">
-  <button class="proj-tab active" data-tab="all">All Projects</button>
-  <button class="proj-tab" data-tab="agentic">Agentic AI</button>
-  <button class="proj-tab" data-tab="ml">Machine Learning</button>
-</div>
-
-<!-- ── PROJECTS SECTION ── -->
+<!-- PROJECTS -->
 <section id="projects" class="py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Portfolio</p>
-    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">Featured Projects</h2>
+    <div class="max-w-6xl mx-auto">
+        <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Portfolio</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10 text-center reveal delay-1">Featured Projects</h2>
 
-    <!-- AGENTIC AI GROUP LABEL (visible in All + Agentic tabs) -->
-    <div class="proj-category-label agentic-label reveal delay-1">Agentic AI</div>
+        <!-- TAB BAR -->
+        <div class="flex justify-center gap-3 mb-10 reveal delay-2">
+            <button class="proj-tab active" data-tab="all">All</button>
+            <button class="proj-tab" data-tab="agentic">Agentic AI</button>
+            <button class="proj-tab" data-tab="ml">Machine Learning</button>
+        </div>
 
-    <!-- TILE GRID -->
-    <div class="proj-grid reveal delay-2">
+        <!-- TILE GRID -->
+        <div class="proj-grid reveal delay-2">
 
-      <!-- 1. SentinelRAG — AGENTIC -->
-      <div class="proj-tile" data-category="agentic">
-        <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/SentinelRAG" target="_blank">View on GitHub →</a></div>
-        <div class="proj-tile-visual vis-sentinel">
-          <div class="vis-grid"></div>
-          <div class="vis-glow"></div>
-          <div class="vis-content">
-            <div class="vis-icon-box"><i class="fas fa-shield-halved"></i></div>
-            <div class="vis-name">SentinelRAG</div>
-            <div class="vis-sub">18,700+ entities · local inference</div>
-            <div class="vis-bars">
-              <div class="vis-bar" style="height:12px"></div><div class="vis-bar" style="height:18px"></div>
-              <div class="vis-bar" style="height:9px"></div><div class="vis-bar" style="height:22px"></div>
-              <div class="vis-bar" style="height:15px"></div><div class="vis-bar" style="height:11px"></div>
-              <div class="vis-bar" style="height:19px"></div><div class="vis-bar" style="height:8px"></div>
+            <!-- 1. SentinelRAG — AGENTIC -->
+            <div class="proj-tile" data-category="agentic">
+                <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/SentinelRAG" target="_blank">View on GitHub →</a></div>
+                <div class="proj-tile-visual vis-sentinel">
+                    <div class="vis-grid"></div>
+                    <div class="vis-glow"></div>
+                    <div class="sentinel-line"></div>
+                    <div class="vis-content">
+                        <div class="vis-icon-box"><i class="fas fa-shield-halved"></i></div>
+                        <div class="vis-name">SentinelRAG</div>
+                        <div class="vis-sub">18,700+ entities · local inference</div>
+                        <div class="vis-bars">
+                            <div class="vis-bar" style="height:12px"></div><div class="vis-bar" style="height:18px"></div>
+                            <div class="vis-bar" style="height:9px"></div><div class="vis-bar" style="height:22px"></div>
+                            <div class="vis-bar" style="height:15px"></div><div class="vis-bar" style="height:11px"></div>
+                            <div class="vis-bar" style="height:19px"></div><div class="vis-bar" style="height:8px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-tile-body">
+                    <div class="proj-tile-pills">
+                        <span class="proj-tile-pill">LangChain</span>
+                        <span class="proj-tile-pill">ChromaDB</span>
+                        <span class="proj-tile-pill">Ollama</span>
+                        <span class="proj-tile-pill">FastAPI</span>
+                    </div>
+                    <div class="proj-tile-title">SentinelRAG — Agentic Sanctions Compliance</div>
+                    <div class="proj-tile-desc">RAG + agentic reasoning for automated sanctions screening against 18,700+ U.S. government blacklist entries. Fully local inference with tamper-proof audit logs and bulk screening dashboard.</div>
+                    <div class="proj-tile-metrics">
+                        <span class="proj-tile-metric">99% Recall</span>
+                        <span class="proj-tile-metric">100% Precision</span>
+                        <span class="proj-tile-metric">Zero hallucinations</span>
+                        <span class="proj-tile-metric">Privacy-first</span>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="proj-tile-body">
-          <div class="proj-tile-pills">
-            <span class="proj-tile-pill">LangChain</span>
-            <span class="proj-tile-pill">ChromaDB</span>
-            <span class="proj-tile-pill">Ollama</span>
-            <span class="proj-tile-pill">FastAPI</span>
-          </div>
-          <div class="proj-tile-title">SentinelRAG — Agentic Sanctions Compliance</div>
-          <div class="proj-tile-desc">RAG + agentic reasoning for automated sanctions screening against 18,700+ U.S. government blacklist entries. Fully local inference with tamper-proof audit logs.</div>
-          <div class="proj-tile-metrics">
-            <span class="proj-tile-metric">99% Recall</span>
-            <span class="proj-tile-metric">100% Precision</span>
-            <span class="proj-tile-metric">Zero hallucinations</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- 2. Agentic Supply Chain — AGENTIC -->
-      <div class="proj-tile" data-category="agentic">
-        <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/agentic-supply-chain-orchestrator" target="_blank">View on GitHub →</a></div>
-        <div class="proj-tile-visual vis-supply">
-          <div class="vis-grid"></div>
-          <div class="vis-glow"></div>
-          <div class="vis-content">
-            <div class="vis-icon-box"><i class="fas fa-boxes-stacked"></i></div>
-            <div class="vis-name">Supply Chain AI</div>
-            <div class="vis-sub">46M+ records · M5 dataset</div>
-            <div class="vis-bars">
-              <div class="vis-bar" style="height:10px"></div><div class="vis-bar" style="height:16px"></div>
-              <div class="vis-bar" style="height:22px"></div><div class="vis-bar" style="height:14px"></div>
-              <div class="vis-bar" style="height:20px"></div><div class="vis-bar" style="height:12px"></div>
-              <div class="vis-bar" style="height:18px"></div><div class="vis-bar" style="height:24px"></div>
+            <!-- 2. Agentic Supply Chain — AGENTIC -->
+            <div class="proj-tile" data-category="agentic">
+                <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/agentic-supply-chain-orchestrator" target="_blank">View on GitHub →</a></div>
+                <div class="proj-tile-visual vis-supply">
+                    <div class="vis-grid"></div>
+                    <div class="vis-glow"></div>
+                    <div class="vis-content">
+                        <div class="vis-icon-box"><i class="fas fa-boxes-stacked"></i></div>
+                        <div class="vis-name">Supply Chain AI</div>
+                        <div class="vis-sub">46M+ records · M5 dataset</div>
+                        <div class="vis-bars">
+                            <div class="vis-bar" style="height:10px"></div><div class="vis-bar" style="height:16px"></div>
+                            <div class="vis-bar" style="height:22px"></div><div class="vis-bar" style="height:14px"></div>
+                            <div class="vis-bar" style="height:20px"></div><div class="vis-bar" style="height:12px"></div>
+                            <div class="vis-bar" style="height:18px"></div><div class="vis-bar" style="height:24px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-tile-body">
+                    <div class="proj-tile-pills">
+                        <span class="proj-tile-pill blue">LangChain</span>
+                        <span class="proj-tile-pill blue">XGBoost</span>
+                        <span class="proj-tile-pill blue">ChromaDB</span>
+                        <span class="proj-tile-pill blue">MLflow</span>
+                    </div>
+                    <div class="proj-tile-title">Agentic Supply Chain Orchestrator</div>
+                    <div class="proj-tile-desc">End-to-end forecasting + agentic reasoning on 46M+ records for demand planning and inventory optimization, with RAG-powered natural language queries over demand signals and operational constraints.</div>
+                    <div class="proj-tile-metrics">
+                        <span class="proj-tile-metric blue">46M+ records</span>
+                        <span class="proj-tile-metric blue">MAPE &lt; 8%</span>
+                        <span class="proj-tile-metric blue">35% faster insights</span>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="proj-tile-body">
-          <div class="proj-tile-pills">
-            <span class="proj-tile-pill blue">LangChain</span>
-            <span class="proj-tile-pill blue">XGBoost</span>
-            <span class="proj-tile-pill blue">ChromaDB</span>
-            <span class="proj-tile-pill blue">MLflow</span>
-          </div>
-          <div class="proj-tile-title">Agentic Supply Chain Orchestrator</div>
-          <div class="proj-tile-desc">End-to-end forecasting + agentic reasoning on 46M+ records for demand planning and inventory optimization, with RAG-powered natural language queries over demand signals.</div>
-          <div class="proj-tile-metrics">
-            <span class="proj-tile-metric blue">46M+ records</span>
-            <span class="proj-tile-metric blue">MAPE &lt; 8%</span>
-            <span class="proj-tile-metric blue">35% faster insights</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- 3. Hybrid Recommender — ML (has RAG element but primarily ML) -->
-      <div class="proj-tile" data-category="ml">
-        <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/ecom-recommender" target="_blank">View on GitHub →</a></div>
-        <div class="proj-tile-visual vis-rec">
-          <div class="vis-grid"></div>
-          <div class="vis-glow"></div>
-          <div class="vis-content">
-            <div class="vis-icon-box"><i class="fas fa-ranking-star"></i></div>
-            <div class="vis-name">Two-Tower RecSys</div>
-            <div class="vis-sub">700K+ reviews · 65ms P99</div>
-            <div class="vis-bars">
-              <div class="vis-bar" style="height:14px"></div><div class="vis-bar" style="height:20px"></div>
-              <div class="vis-bar" style="height:10px"></div><div class="vis-bar" style="height:24px"></div>
-              <div class="vis-bar" style="height:17px"></div><div class="vis-bar" style="height:13px"></div>
-              <div class="vis-bar" style="height:21px"></div><div class="vis-bar" style="height:9px"></div>
+            <!-- 3. Hybrid Recommender — ML -->
+            <div class="proj-tile" data-category="ml">
+                <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/ecom-recommender" target="_blank">View on GitHub →</a></div>
+                <div class="proj-tile-visual vis-rec">
+                    <div class="vis-grid"></div>
+                    <div class="vis-glow"></div>
+                    <div class="vis-content">
+                        <div class="vis-icon-box"><i class="fas fa-ranking-star"></i></div>
+                        <div class="vis-name">Two-Tower RecSys</div>
+                        <div class="vis-sub">700K+ reviews · 65ms P99</div>
+                        <div class="vis-bars">
+                            <div class="vis-bar" style="height:14px"></div><div class="vis-bar" style="height:20px"></div>
+                            <div class="vis-bar" style="height:10px"></div><div class="vis-bar" style="height:24px"></div>
+                            <div class="vis-bar" style="height:17px"></div><div class="vis-bar" style="height:13px"></div>
+                            <div class="vis-bar" style="height:21px"></div><div class="vis-bar" style="height:9px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-tile-body">
+                    <div class="proj-tile-pills">
+                        <span class="proj-tile-pill purple">FAISS</span>
+                        <span class="proj-tile-pill purple">LightGBM</span>
+                        <span class="proj-tile-pill purple">FastAPI</span>
+                        <span class="proj-tile-pill purple">MLflow</span>
+                    </div>
+                    <div class="proj-tile-title">Hybrid Recommender — Two-Stage Ranking</div>
+                    <div class="proj-tile-desc">Production two-stage RecSys on 700K+ Amazon reviews. ALS + FAISS retrieval, LightGBM re-ranking optimizing CTR + CVR, cold-start solved via Sentence Transformers.</div>
+                    <div class="proj-tile-metrics">
+                        <span class="proj-tile-metric purple">NDCG@10: 0.975</span>
+                        <span class="proj-tile-metric purple">65ms P99</span>
+                        <span class="proj-tile-metric purple">Cold start solved</span>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="proj-tile-body">
-          <div class="proj-tile-pills">
-            <span class="proj-tile-pill purple">FAISS</span>
-            <span class="proj-tile-pill purple">LightGBM</span>
-            <span class="proj-tile-pill purple">FastAPI</span>
-            <span class="proj-tile-pill purple">MLflow</span>
-          </div>
-          <div class="proj-tile-title">Hybrid Recommender — Two-Stage Ranking</div>
-          <div class="proj-tile-desc">Production two-stage RecSys on 700K+ Amazon reviews. ALS + FAISS retrieval, LightGBM re-ranking for CTR/CVR, cold-start via Sentence Transformers.</div>
-          <div class="proj-tile-metrics">
-            <span class="proj-tile-metric purple">NDCG@10: 0.975</span>
-            <span class="proj-tile-metric purple">65ms P99</span>
-            <span class="proj-tile-metric purple">Cold start solved</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- 4. Railway Track Inspection — ML -->
-      <div class="proj-tile" data-category="ml">
-        <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/railway-track-inspector" target="_blank">View on GitHub →</a></div>
-        <img src="railway-defect-detection-pro.jpg" alt="Railway Track Defect Detection" class="proj-tile-img">
-        <div class="proj-tile-body">
-          <div class="proj-tile-pills">
-            <span class="proj-tile-pill">PyTorch</span>
-            <span class="proj-tile-pill">YOLO</span>
-            <span class="proj-tile-pill">OpenCV</span>
-          </div>
-          <div class="proj-tile-title">Railway Track Defect Detection & Maintenance Optimization</div>
-          <div class="proj-tile-desc">Computer vision pipeline processing 500+ hours of track footage to detect safety-critical defects with real-time inspection dashboard and automated reporting.</div>
-          <div class="proj-tile-metrics">
-            <span class="proj-tile-metric">92% accuracy</span>
-            <span class="proj-tile-metric">40% less manual inspection</span>
-          </div>
-        </div>
-      </div>
+            <!-- 4. Railway Track Inspection — ML -->
+            <div class="proj-tile" data-category="ml">
+                <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/railway-track-inspector" target="_blank">View on GitHub →</a></div>
+                <img src="railway-defect-detection-pro.jpg" alt="Railway Track Defect Detection" class="proj-tile-img">
+                <div class="proj-tile-body">
+                    <div class="proj-tile-pills">
+                        <span class="proj-tile-pill">PyTorch</span>
+                        <span class="proj-tile-pill">YOLO</span>
+                        <span class="proj-tile-pill">OpenCV</span>
+                    </div>
+                    <div class="proj-tile-title">Railway Track Defect Detection & Maintenance</div>
+                    <div class="proj-tile-desc">Computer vision pipeline processing 500+ hours of track footage to detect safety-critical defects. Real-time inspection dashboard with automated reporting for maintenance teams.</div>
+                    <div class="proj-tile-metrics">
+                        <span class="proj-tile-metric">92% accuracy</span>
+                        <span class="proj-tile-metric">40% less manual inspection</span>
+                    </div>
+                </div>
+            </div>
 
-      <!-- 5. Wildfire Detection — ML -->
-      <div class="proj-tile" data-category="ml">
-        <div class="proj-tile-overlay"><a href="https://github.com/aneeshjayan/Wildfire-detection" target="_blank">View on GitHub →</a></div>
-        <img src="wildfire-detection-image.png" alt="Wildfire Detection" class="proj-tile-img">
-        <div class="proj-tile-body">
-          <div class="proj-tile-pills">
-            <span class="proj-tile-pill">PyTorch</span>
-            <span class="proj-tile-pill">Vision Transformers</span>
-            <span class="proj-tile-pill">XAI</span>
-          </div>
-          <div class="proj-tile-title">Multimodal Wildfire Detection (RGB + Thermal)</div>
-          <div class="proj-tile-desc">Vision Transformer model fusing RGB and thermal imagery for early wildfire detection, with attention-based explainability for interpretable decisions.</div>
-          <div class="proj-tile-metrics">
-            <span class="proj-tile-metric">98.6% accuracy</span>
-            <span class="proj-tile-metric">+20% precision</span>
-          </div>
-        </div>
-      </div>
+            <!-- 5. Wildfire Detection — ML -->
+            <div class="proj-tile" data-category="ml">
+                <div class="proj-tile-overlay"><a href="https://github.com/aneeshjayan/Wildfire-detection" target="_blank">View on GitHub →</a></div>
+                <img src="wildfire-detection-image.png" alt="Wildfire Detection" class="proj-tile-img">
+                <div class="proj-tile-body">
+                    <div class="proj-tile-pills">
+                        <span class="proj-tile-pill">PyTorch</span>
+                        <span class="proj-tile-pill">Vision Transformers</span>
+                        <span class="proj-tile-pill">XAI</span>
+                    </div>
+                    <div class="proj-tile-title">Multimodal Wildfire Detection (RGB + Thermal)</div>
+                    <div class="proj-tile-desc">Vision Transformer model fusing RGB and thermal imagery for early wildfire detection, with attention-based explainability for interpretable decision-making.</div>
+                    <div class="proj-tile-metrics">
+                        <span class="proj-tile-metric">98.6% accuracy</span>
+                        <span class="proj-tile-metric">+20% precision</span>
+                    </div>
+                </div>
+            </div>
 
-      <!-- 6. Fraud Detection — ML -->
-      <div class="proj-tile" data-category="ml">
-        <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/fraud-risk-platform" target="_blank">View on GitHub →</a></div>
-        <img src="fraud_detection_project.png" alt="Fraud Detection" class="proj-tile-img">
-        <div class="proj-tile-body">
-          <div class="proj-tile-pills">
-            <span class="proj-tile-pill">XGBoost</span>
-            <span class="proj-tile-pill">SHAP</span>
-            <span class="proj-tile-pill">scikit-learn</span>
-          </div>
-          <div class="proj-tile-title">Real-Time Fraud Detection & Risk Scoring</div>
-          <div class="proj-tile-desc">Time-aware fraud detection on 300K+ transactions using leakage-safe modeling and SHAP-based explainability, mirroring production-grade financial risk systems.</div>
-          <div class="proj-tile-metrics">
-            <span class="proj-tile-metric">MCC: 0.50</span>
-            <span class="proj-tile-metric">300K+ transactions</span>
-          </div>
-        </div>
-      </div>
+            <!-- 6. Fraud Detection — ML -->
+            <div class="proj-tile" data-category="ml">
+                <div class="proj-tile-overlay"><a href="https://github.com/VigneshwariJayaprakash/fraud-risk-platform" target="_blank">View on GitHub →</a></div>
+                <img src="fraud_detection_project.png" alt="Fraud Detection" class="proj-tile-img">
+                <div class="proj-tile-body">
+                    <div class="proj-tile-pills">
+                        <span class="proj-tile-pill">XGBoost</span>
+                        <span class="proj-tile-pill">SHAP</span>
+                        <span class="proj-tile-pill">scikit-learn</span>
+                    </div>
+                    <div class="proj-tile-title">Real-Time Fraud Detection & Risk Scoring</div>
+                    <div class="proj-tile-desc">Time-aware fraud detection on 300K+ transactions using leakage-safe modeling and SHAP-based explainability, mirroring production-grade financial risk systems.</div>
+                    <div class="proj-tile-metrics">
+                        <span class="proj-tile-metric">MCC: 0.50</span>
+                        <span class="proj-tile-metric">300K+ transactions</span>
+                    </div>
+                </div>
+            </div>
 
-    </div><!-- /proj-grid -->
-  </div>
+        </div><!-- /proj-grid -->
+    </div>
 </section>
 
-<script>
-(function () {
-  const tabs   = document.querySelectorAll('.proj-tab');
-  const tiles  = document.querySelectorAll('.proj-tile');
-  const agLabel = document.querySelector('.agentic-label');
-
-  // We'll inject a second label for ML dynamically
-  const mlLabel = document.createElement('div');
-  mlLabel.className = 'proj-category-label ml-label';
-  mlLabel.textContent = 'Machine Learning';
-
-  // Insert ML label before the grid
-  const grid = document.querySelector('.proj-grid');
-  grid.parentNode.insertBefore(mlLabel, grid);
-
-  function filter(tab) {
-    tabs.forEach(t => t.classList.toggle('active', t === tab));
-    const cat = tab.dataset.tab;
-
-    tiles.forEach(tile => {
-      const tileCat = tile.dataset.category;
-      const show = cat === 'all' || tileCat === cat;
-      tile.classList.toggle('hidden', !show);
-      if (show) {
-        // Re-trigger animation
-        tile.style.animation = 'none';
-        tile.offsetHeight; // reflow
-        tile.style.animation = '';
-      }
-    });
-
-    // Show/hide category labels
-    if (cat === 'all') {
-      agLabel.style.display = '';
-      mlLabel.style.display = '';
-    } else if (cat === 'agentic') {
-      agLabel.style.display = '';
-      mlLabel.style.display = 'none';
-    } else {
-      agLabel.style.display = 'none';
-      mlLabel.style.display = '';
-    }
-  }
-
-  tabs.forEach(tab => tab.addEventListener('click', () => filter(tab)));
-
-  // Move ML label to correct position (before first ML tile in DOM)
-  // Since grid is flex/grid, the labels need to be outside the grid
-  // They're already outside — just control visibility
-})();
-</script>
-<!-- ── EDUCATION ── -->
+<!-- EDUCATION -->
 <section class="py-24 px-6 section-alt">
     <div class="max-w-4xl mx-auto">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Education</p>
@@ -1184,7 +892,7 @@
                 <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-certificate text-emerald-500 text-xs"></i>Machine Learning Specialization — DeepLearning.AI</div>
                 <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-certificate text-emerald-500 text-xs"></i>Deep Learning Specialization — DeepLearning.AI</div>
                 <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-certificate text-emerald-500 text-xs"></i>Generative AI with AWS — Amazon Web Services</div>
-                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-trophy text-emerald-500 text-xs"></i>CIO Recognition — NM DOIT (RAG chatbot cutting triage by 70% &amp; Power BI dashboard)</div>
+                <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-trophy text-emerald-500 text-xs"></i>CIO Recognition — NM DOIT (RAG chatbot cutting triage by 70%)</div>
                 <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-trophy text-emerald-500 text-xs"></i>CFO Recognition — BNSF Railway ($1M+ savings)</div>
                 <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-trophy text-emerald-500 text-xs"></i>Insta Award — Infosys (ML Engineering Impact)</div>
                 <div class="flex items-center gap-3 text-gray-600 text-sm"><i class="fas fa-medal text-emerald-500 text-xs"></i>Gold Medalist — Anna University</div>
@@ -1193,7 +901,7 @@
     </div>
 </section>
 
-<!-- ── CONTACT ── -->
+<!-- CONTACT -->
 <footer id="contact" class="py-24 px-6">
     <div class="max-w-4xl mx-auto text-center">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-4 reveal">Get In Touch</p>
@@ -1222,18 +930,23 @@
 </footer>
 
 <script>
+// Progress bar
 const bar = document.getElementById('progress-bar');
 window.addEventListener('scroll', () => {
     const s = document.documentElement.scrollTop;
     const h = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.transform = `scaleX(${s / h})`;
 });
+
+// Mobile menu
 const btn = document.getElementById('mobile-menu-btn');
 const closeBtn = document.getElementById('close-menu');
 const menu = document.getElementById('mobile-menu');
 btn.addEventListener('click', () => menu.classList.add('active'));
 closeBtn.addEventListener('click', () => menu.classList.remove('active'));
 document.querySelectorAll('.menu-link').forEach(l => l.addEventListener('click', () => menu.classList.remove('active')));
+
+// Experience tabs
 document.querySelectorAll('.exp-tab').forEach(tab => {
     tab.addEventListener('click', () => {
         document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
@@ -1242,10 +955,37 @@ document.querySelectorAll('.exp-tab').forEach(tab => {
         document.getElementById(tab.dataset.target).classList.add('active');
     });
 });
+
+// Project tabs
+const projTabs  = document.querySelectorAll('.proj-tab');
+const projTiles = document.querySelectorAll('.proj-tile');
+
+projTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        projTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const cat = tab.dataset.tab;
+        projTiles.forEach(tile => {
+            const match = cat === 'all' || tile.dataset.category === cat;
+            tile.classList.toggle('hidden', !match);
+            if (match) {
+                tile.style.animation = 'none';
+                tile.offsetHeight;
+                tile.style.animation = '';
+            }
+        });
+    });
+});
+
+// Scroll reveal
 const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
@@ -1253,13 +993,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
+
+// Analytics
 document.querySelectorAll('a[href*="Resume.pdf"], .track-resume').forEach(a => {
     a.addEventListener('click', () => gtag('event', 'resume_download', { event_category: 'engagement', event_label: 'resume_pdf' }));
 });
 document.querySelectorAll('a[href*="github.com"], .track-github').forEach(a => {
     a.addEventListener('click', () => gtag('event', 'github_click', { event_category: 'engagement', event_label: a.href || 'github' }));
 });
-document.querySelectorAll('.project-card[data-project]').forEach(card => {
+document.querySelectorAll('.proj-tile[data-project]').forEach(card => {
     card.addEventListener('click', () => gtag('event', 'project_view', { event_category: 'portfolio', event_label: card.dataset.project }));
 });
 document.querySelectorAll('.track-contact').forEach(a => {
@@ -1268,6 +1010,8 @@ document.querySelectorAll('.track-contact').forEach(a => {
 document.querySelectorAll('.track-social').forEach(a => {
     a.addEventListener('click', () => gtag('event', 'social_click', { event_category: 'engagement', event_label: a.dataset.label || 'linkedin' }));
 });
+
+// Scroll depth
 const depths = { 25: false, 50: false, 75: false, 100: false };
 window.addEventListener('scroll', () => {
     const scrollPct = Math.round((document.documentElement.scrollTop / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
