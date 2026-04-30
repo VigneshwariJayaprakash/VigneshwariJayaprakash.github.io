@@ -708,293 +708,485 @@
     </div>
 </section>
 
+<div class="flex justify-center gap-4 mb-10">
+    <button class="proj-tab active" data-tab="all">All</button>
+    <button class="proj-tab" data-tab="ml">Machine Learning</button>
+    <button class="proj-tab" data-tab="agentic">Agentic AI</button>
+</div>
+
 <!-- ── PROJECTS ── -->
 <section id="projects" class="py-24 px-6">
     <div class="max-w-6xl mx-auto">
         <p class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 text-center reveal">Portfolio</p>
         <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-14 text-center reveal delay-1">Featured Projects</h2>
 
-        <!-- SentinelRAG -->
-        <div class="bento-card project-card overflow-hidden mb-6 reveal delay-2" data-project="SentinelRAG">
-            <a href="https://github.com/VigneshwariJayaprakash/SentinelRAG" target="_blank" class="overlay-link track-github">
-                <span class="bg-white text-emerald-700 font-bold px-6 py-3 rounded-full text-sm">View on GitHub →</span>
-            </a>
-            <div class="md:flex">
-                <div class="md:w-2/5 sentinel-visual flex items-center justify-center p-10 min-h-56 relative">
-                    <div class="sentinel-grid"></div>
-                    <div class="sentinel-node" style="width:10px;height:10px;top:20%;left:15%;animation-delay:0s;"></div>
-                    <div class="sentinel-node" style="width:8px;height:8px;top:65%;left:25%;animation-delay:0.8s;"></div>
-                    <div class="sentinel-node" style="width:12px;height:12px;top:35%;left:75%;animation-delay:1.5s;"></div>
-                    <div class="sentinel-node" style="width:7px;height:7px;top:75%;left:70%;animation-delay:0.4s;"></div>
-                    <div class="sentinel-node" style="width:9px;height:9px;top:15%;left:60%;animation-delay:2s;"></div>
-                    <div class="sentinel-line" style="width:100%;left:0;top:0;animation-delay:0s;"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center backdrop-blur-sm">
-                            <i class="fas fa-shield-halved text-4xl text-emerald-300"></i>
-                        </div>
-                        <div class="font-bold text-emerald-200 text-sm tracking-widest uppercase mb-1">SentinelRAG</div>
-                        <div class="text-emerald-400/70 text-xs font-mono">18,700+ entities · local inference</div>
-                        <div class="mt-4 flex gap-1 justify-center">
-                            <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:14px"></div>
-                            <div class="h-5 w-1 bg-emerald-400/80 rounded-full" style="height:20px"></div>
-                            <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:10px"></div>
-                            <div class="h-5 w-1 bg-emerald-300/90 rounded-full" style="height:24px"></div>
-                            <div class="h-5 w-1 bg-emerald-400/70 rounded-full" style="height:16px"></div>
-                            <div class="h-5 w-1 bg-emerald-400/50 rounded-full" style="height:12px"></div>
-                            <div class="h-5 w-1 bg-emerald-300/80 rounded-full" style="height:22px"></div>
-                            <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:9px"></div>
-                        </div>
-                    </div>
+       <!-- SentinelRAG -->
+<div class="bento-card project-card overflow-hidden mb-6 reveal delay-2"
+     data-project="SentinelRAG"
+     data-category="agentic">
+
+    <a href="https://github.com/VigneshwariJayaprakash/SentinelRAG"
+       target="_blank"
+       class="overlay-link track-github">
+        <span class="bg-white text-emerald-700 font-bold px-6 py-3 rounded-full text-sm">
+            View on GitHub →
+        </span>
+    </a>
+
+    <div class="md:flex">
+
+        <!-- LEFT VISUAL -->
+        <div class="md:w-2/5 sentinel-visual flex items-center justify-center p-10 min-h-56 relative">
+            <div class="sentinel-grid"></div>
+
+            <div class="sentinel-node" style="width:10px;height:10px;top:20%;left:15%;animation-delay:0s;"></div>
+            <div class="sentinel-node" style="width:8px;height:8px;top:65%;left:25%;animation-delay:0.8s;"></div>
+            <div class="sentinel-node" style="width:12px;height:12px;top:35%;left:75%;animation-delay:1.5s;"></div>
+            <div class="sentinel-node" style="width:7px;height:7px;top:75%;left:70%;animation-delay:0.4s;"></div>
+            <div class="sentinel-node" style="width:9px;height:9px;top:15%;left:60%;animation-delay:2s;"></div>
+
+            <div class="sentinel-line" style="width:100%;left:0;top:0;"></div>
+
+            <div class="relative z-10 text-center">
+                <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center backdrop-blur-sm">
+                    <i class="fas fa-shield-halved text-4xl text-emerald-300"></i>
                 </div>
-                <div class="md:w-3/5 p-9">
-                    <div class="flex flex-wrap items-center gap-2 mb-4">
-                        <span class="in-progress-badge">In Progress</span>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">Python</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">LangChain</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">ChromaDB</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">Ollama</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">FastAPI</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">Streamlit</span>
-                    </div>
-                    <h3 class="text-2xl font-extrabold text-gray-900 mb-3">SentinelRAG — Sanctions Compliance Screening</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Automated sanctions screening system checking entities against a U.S. government blacklist of 18,700+ entries using keyword, semantic, and knowledge graph search. All data processed locally — deployed via FastAPI with a bulk-screening dashboard and tamper-proof audit log.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metric-badge">99% Recall</span>
-                        <span class="metric-badge">100% Precision</span>
-                        <span class="metric-badge">18,700+ entities</span>
-                        <span class="metric-badge">Zero hallucinations</span>
-                        <span class="metric-badge">Privacy-first (local)</span>
-                    </div>
+
+                <div class="font-bold text-emerald-200 text-sm tracking-widest uppercase mb-1">
+                    SentinelRAG
+                </div>
+
+                <div class="text-emerald-400/70 text-xs font-mono">
+                    18,700+ entities · local inference
+                </div>
+
+                <div class="mt-4 flex gap-1 justify-center">
+                    <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:14px"></div>
+                    <div class="h-5 w-1 bg-emerald-400/80 rounded-full" style="height:20px"></div>
+                    <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:10px"></div>
+                    <div class="h-5 w-1 bg-emerald-300/90 rounded-full" style="height:24px"></div>
+                    <div class="h-5 w-1 bg-emerald-400/70 rounded-full" style="height:16px"></div>
+                    <div class="h-5 w-1 bg-emerald-400/50 rounded-full" style="height:12px"></div>
+                    <div class="h-5 w-1 bg-emerald-300/80 rounded-full" style="height:22px"></div>
+                    <div class="h-5 w-1 bg-emerald-400/60 rounded-full" style="height:9px"></div>
                 </div>
             </div>
         </div>
 
-        <!-- E-Commerce Hybrid Recommender -->
-        <div class="bento-card project-card overflow-hidden mb-6 reveal" data-project="E-Commerce Hybrid Recommender System">
-            <a href="https://github.com/VigneshwariJayaprakash/ecom-recommender" target="_blank" class="overlay-link track-github">
-                <span class="bg-white text-purple-700 font-bold px-6 py-3 rounded-full text-sm">View on GitHub →</span>
-            </a>
-            <div class="md:flex">
-                <div class="md:w-2/5 flex items-center justify-center p-10 min-h-56 relative overflow-hidden"
-                     style="background: linear-gradient(135deg, #2d1b69 0%, #3d2b7a 40%, #4c3494 70%, #6d4bba 100%);">
-                    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(167,139,250,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.07) 1px, transparent 1px); background-size: 28px 28px;"></div>
-                    <div class="absolute rounded-full" style="width:8px;height:8px;top:20%;left:12%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:0s;"></div>
-                    <div class="absolute rounded-full" style="width:6px;height:6px;top:70%;left:18%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:0.7s;"></div>
-                    <div class="absolute rounded-full" style="width:10px;height:10px;top:25%;left:82%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:1.4s;"></div>
-                    <div class="absolute rounded-full" style="width:7px;height:7px;top:72%;left:78%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:2.1s;"></div>
-                    <div class="relative z-10 w-full">
-                        <div class="text-center mb-3">
-                            <div class="text-purple-200 text-xs font-mono tracking-widest uppercase mb-1">Two-Tower RecSys</div>
-                        </div>
-                        <div class="flex items-end justify-center gap-4 mb-3">
-                            <div class="text-center">
-                                <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
-                                     style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
-                                    <i class="fas fa-user text-purple-300 text-lg mb-1"></i>
-                                    <div class="text-purple-300 text-xs font-bold">User</div>
-                                    <div class="text-purple-400 text-xs">Tower</div>
-                                </div>
-                                <div class="text-purple-400/60 text-xs font-mono">64d</div>
-                            </div>
-                            <div class="text-center pb-6">
-                                <div class="text-purple-300/80 text-xs font-mono mb-1">FAISS</div>
-                                <div class="text-purple-400 text-lg">→</div>
-                                <div class="text-purple-300/60 text-xs">top 100</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
-                                     style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
-                                    <i class="fas fa-ranking-star text-purple-300 text-lg mb-1"></i>
-                                    <div class="text-purple-300 text-xs font-bold">LGBM</div>
-                                    <div class="text-purple-400 text-xs">Ranker</div>
-                                </div>
-                                <div class="text-purple-400/60 text-xs font-mono">top 10</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
-                                     style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
-                                    <i class="fas fa-box text-purple-300 text-lg mb-1"></i>
-                                    <div class="text-purple-300 text-xs font-bold">Item</div>
-                                    <div class="text-purple-400 text-xs">Tower</div>
-                                </div>
-                                <div class="text-purple-400/60 text-xs font-mono">64d</div>
-                            </div>
-                        </div>
-                        <div class="flex justify-center gap-3">
-                            <div class="text-center">
-                                <div class="text-purple-200 text-xs font-bold">700k+</div>
-                                <div class="text-purple-400/70 text-xs">reviews</div>
-                            </div>
-                            <div class="text-purple-500/40 text-xs">|</div>
-                            <div class="text-center">
-                                <div class="text-purple-200 text-xs font-bold">65ms</div>
-                                <div class="text-purple-400/70 text-xs">latency</div>
-                            </div>
-                            <div class="text-purple-500/40 text-xs">|</div>
-                            <div class="text-center">
-                                <div class="text-purple-200 text-xs font-bold">99.999%</div>
-                                <div class="text-purple-400/70 text-xs">sparse</div>
-                            </div>
-                        </div>
+        <!-- RIGHT CONTENT -->
+        <div class="md:w-3/5 p-9">
+
+            <!-- STATUS -->
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="metric-badge">Production-Ready</span>
+            </div>
+
+            <!-- TECH STACK -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">Python</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">LangChain</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">ChromaDB</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">Ollama</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">FastAPI</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">Streamlit</span>
+            </div>
+
+            <!-- TITLE -->
+            <h3 class="text-2xl font-extrabold text-gray-900 mb-3">
+                SentinelRAG — Agentic Sanctions Compliance System
+            </h3>
+
+            <!-- DESCRIPTION -->
+            <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                Automated sanctions screening system leveraging RAG + agentic reasoning to check entities against a U.S. government blacklist of 18,700+ entries. Combines keyword, semantic, and knowledge graph search with fully local inference. Deployed via FastAPI with bulk screening dashboard and tamper-proof audit logs for regulated environments.
+            </p>
+
+            <!-- METRICS -->
+            <div class="flex flex-wrap gap-2">
+                <span class="metric-badge">99% Recall</span>
+                <span class="metric-badge">100% Precision</span>
+                <span class="metric-badge">18,700+ entities</span>
+                <span class="metric-badge">Zero hallucinations</span>
+                <span class="metric-badge">Privacy-first (local)</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+      <!-- E-Commerce Hybrid Recommender -->
+<div class="bento-card project-card overflow-hidden mb-6 reveal"
+     data-project="E-Commerce Hybrid Recommender System"
+     data-category="ml">
+
+    <a href="https://github.com/VigneshwariJayaprakash/ecom-recommender"
+       target="_blank"
+       class="overlay-link track-github">
+        <span class="bg-white text-purple-700 font-bold px-6 py-3 rounded-full text-sm">
+            View on GitHub →
+        </span>
+    </a>
+
+    <div class="md:flex">
+
+        <!-- LEFT VISUAL -->
+        <div class="md:w-2/5 flex items-center justify-center p-10 min-h-56 relative overflow-hidden"
+             style="background: linear-gradient(135deg, #2d1b69 0%, #3d2b7a 40%, #4c3494 70%, #6d4bba 100%);">
+
+            <div class="absolute inset-0"
+                 style="background-image: linear-gradient(rgba(167,139,250,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.07) 1px, transparent 1px); background-size: 28px 28px;">
+            </div>
+
+            <div class="absolute rounded-full" style="width:8px;height:8px;top:20%;left:12%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;"></div>
+            <div class="absolute rounded-full" style="width:6px;height:6px;top:70%;left:18%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:0.7s;"></div>
+            <div class="absolute rounded-full" style="width:10px;height:10px;top:25%;left:82%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:1.4s;"></div>
+            <div class="absolute rounded-full" style="width:7px;height:7px;top:72%;left:78%;background:rgba(167,139,250,0.3);border:1px solid rgba(167,139,250,0.6);animation:node-pulse 3s ease-in-out infinite;animation-delay:2.1s;"></div>
+
+            <div class="relative z-10 w-full">
+
+                <div class="text-center mb-3">
+                    <div class="text-purple-200 text-xs font-mono tracking-widest uppercase mb-1">
+                        Two-Tower RecSys
                     </div>
                 </div>
-                <div class="md:w-3/5 p-9">
-                    <div class="flex flex-wrap items-center gap-2 mb-4">
-                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">✅ Completed</span>
+
+                <!-- PIPELINE VISUAL -->
+                <div class="flex items-end justify-center gap-4 mb-3">
+
+                    <div class="text-center">
+                        <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
+                             style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
+                            <i class="fas fa-user text-purple-300 text-lg mb-1"></i>
+                            <div class="text-purple-300 text-xs font-bold">User</div>
+                            <div class="text-purple-400 text-xs">Tower</div>
+                        </div>
+                        <div class="text-purple-400/60 text-xs font-mono">64d</div>
                     </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Python</span>
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">ALS · Implicit</span>
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">FAISS</span>
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">LightGBM</span>
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Sentence Transformers</span>
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">FastAPI</span>
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Streamlit</span>
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">MLflow</span>
-                        <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Docker</span>
+
+                    <div class="text-center pb-6">
+                        <div class="text-purple-300/80 text-xs font-mono mb-1">FAISS</div>
+                        <div class="text-purple-400 text-lg">→</div>
+                        <div class="text-purple-300/60 text-xs">top 100</div>
                     </div>
-                    <h3 class="text-2xl font-extrabold text-gray-900 mb-3">E-Commerce Hybrid Recommender System</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Production-style two-stage recommendation pipeline on 700k+ Amazon Beauty reviews — mirroring architectures at Amazon and Pinterest. Stage 1 uses ALS Matrix Factorization with FAISS ANN search to retrieve 100 candidates in milliseconds. Stage 2 re-ranks with LightGBM optimizing a combined CTR + CVR objective. Cold start is solved using Sentence Transformer embeddings for 75.5% of products with no purchase history. Served via FastAPI with a live Streamlit demo achieving ~65ms P99 latency.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">700k+ reviews</span>
-                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">NDCG@10: 0.975</span>
-                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">65ms P99 latency</span>
-                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">Cold Start solved</span>
-                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">99.999% sparse</span>
-                        <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">Live API demo</span>
+
+                    <div class="text-center">
+                        <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
+                             style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
+                            <i class="fas fa-ranking-star text-purple-300 text-lg mb-1"></i>
+                            <div class="text-purple-300 text-xs font-bold">LGBM</div>
+                            <div class="text-purple-400 text-xs">Ranker</div>
+                        </div>
+                        <div class="text-purple-400/60 text-xs font-mono">top 10</div>
                     </div>
+
+                    <div class="text-center">
+                        <div class="w-16 rounded-xl border border-purple-400/40 flex flex-col items-center justify-center py-3 mb-1"
+                             style="background:rgba(139,92,246,0.2);backdrop-filter:blur(4px);">
+                            <i class="fas fa-box text-purple-300 text-lg mb-1"></i>
+                            <div class="text-purple-300 text-xs font-bold">Item</div>
+                            <div class="text-purple-400 text-xs">Tower</div>
+                        </div>
+                        <div class="text-purple-400/60 text-xs font-mono">64d</div>
+                    </div>
+
+                </div>
+
+                <!-- STATS -->
+                <div class="flex justify-center gap-3">
+                    <div class="text-center">
+                        <div class="text-purple-200 text-xs font-bold">700k+</div>
+                        <div class="text-purple-400/70 text-xs">reviews</div>
+                    </div>
+                    <div class="text-purple-500/40 text-xs">|</div>
+                    <div class="text-center">
+                        <div class="text-purple-200 text-xs font-bold">65ms</div>
+                        <div class="text-purple-400/70 text-xs">latency</div>
+                    </div>
+                    <div class="text-purple-500/40 text-xs">|</div>
+                    <div class="text-center">
+                        <div class="text-purple-200 text-xs font-bold">99.999%</div>
+                        <div class="text-purple-400/70 text-xs">sparse</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="md:w-3/5 p-9">
+
+            <!-- STATUS -->
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="metric-badge"
+                      style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">
+                    Completed
+                </span>
+            </div>
+
+            <!-- TECH STACK -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Python</span>
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">ALS · Implicit</span>
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">FAISS</span>
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">LightGBM</span>
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Sentence Transformers</span>
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">FastAPI</span>
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Streamlit</span>
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">MLflow</span>
+                <span class="text-xs px-3 py-1 rounded-full border" style="background:rgba(139,92,246,0.08);color:#6d28d9;border-color:rgba(139,92,246,0.25);">Docker</span>
+            </div>
+
+            <!-- TITLE -->
+            <h3 class="text-2xl font-extrabold text-gray-900 mb-3">
+                Hybrid Recommender System — Two-Stage Ranking Pipeline
+            </h3>
+
+            <!-- DESCRIPTION -->
+            <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                Production-grade two-stage recommendation system on 700K+ Amazon reviews. 
+                Stage 1 uses ALS + FAISS ANN search for real-time candidate retrieval, while Stage 2 re-ranks with LightGBM optimizing CTR + CVR. 
+                Cold start is addressed using Sentence Transformer embeddings, enabling coverage for sparse products. 
+                Deployed via FastAPI with ~65ms P99 latency.
+            </p>
+
+            <!-- METRICS -->
+            <div class="flex flex-wrap gap-2">
+                <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">700k+ reviews</span>
+                <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">NDCG@10: 0.975</span>
+                <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">65ms P99 latency</span>
+                <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">Cold Start Solved</span>
+                <span class="metric-badge" style="background:rgba(109,75,186,0.1);border-color:rgba(109,75,186,0.3);color:#5b21b6;">99.999% sparse</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        <!-- Agentic Supply Chain -->
+<div class="bento-card project-card overflow-hidden mb-6 reveal"
+     data-project="Agentic Supply Chain Demand Orchestrator"
+     data-category="agentic">
+
+    <a href="https://github.com/VigneshwariJayaprakash/agentic-supply-chain-orchestrator"
+       target="_blank"
+       class="overlay-link track-github">
+        <span class="bg-white text-blue-700 font-bold px-6 py-3 rounded-full text-sm">
+            View on GitHub →
+        </span>
+    </a>
+
+    <div class="md:flex">
+
+        <!-- LEFT VISUAL -->
+        <div class="md:w-2/5 amat-visual flex items-center justify-center p-10 min-h-56 relative">
+            <div class="amat-grid"></div>
+
+            <div class="amat-node" style="width:10px;height:10px;top:20%;left:15%;animation-delay:0.3s;"></div>
+            <div class="amat-node" style="width:8px;height:8px;top:70%;left:20%;animation-delay:1.1s;"></div>
+            <div class="amat-node" style="width:11px;height:11px;top:30%;left:80%;animation-delay:1.8s;"></div>
+            <div class="amat-node" style="width:7px;height:7px;top:75%;left:75%;animation-delay:0.6s;"></div>
+
+            <div class="relative z-10 text-center">
+                <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center backdrop-blur-sm">
+                    <i class="fas fa-boxes-stacked text-4xl text-blue-200"></i>
+                </div>
+
+                <div class="font-bold text-blue-200 text-sm tracking-widest uppercase mb-1">
+                    Supply Chain AI
+                </div>
+
+                <div class="text-blue-300/70 text-xs font-mono">
+                    46M+ records · M5 dataset
+                </div>
+
+                <div class="mt-4 flex gap-1 justify-center items-end" style="height:28px">
+                    <div class="amat-bar w-1 rounded-sm" style="height:12px"></div>
+                    <div class="amat-bar w-1 rounded-sm" style="height:18px"></div>
+                    <div class="amat-bar w-1 rounded-sm" style="height:10px"></div>
+                    <div class="amat-bar w-1 rounded-sm" style="height:24px"></div>
+                    <div class="amat-bar w-1 rounded-sm" style="height:16px"></div>
+                    <div class="amat-bar w-1 rounded-sm" style="height:20px"></div>
+                    <div class="amat-bar w-1 rounded-sm" style="height:14px"></div>
+                    <div class="amat-bar w-1 rounded-sm" style="height:26px"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Agentic Supply Chain — REFRAMED with optimization language -->
-        <div class="bento-card project-card overflow-hidden mb-6 reveal" data-project="Agentic Supply Chain Demand Orchestrator">
-            <a href="https://github.com/VigneshwariJayaprakash/agentic-supply-chain-orchestrator" target="_blank" class="overlay-link track-github">
-                <span class="bg-white text-blue-700 font-bold px-6 py-3 rounded-full text-sm">View on GitHub →</span>
-            </a>
-            <div class="md:flex">
-                <div class="md:w-2/5 amat-visual flex items-center justify-center p-10 min-h-56 relative">
-                    <div class="amat-grid"></div>
-                    <div class="amat-node" style="width:10px;height:10px;top:20%;left:15%;animation-delay:0.3s;"></div>
-                    <div class="amat-node" style="width:8px;height:8px;top:70%;left:20%;animation-delay:1.1s;"></div>
-                    <div class="amat-node" style="width:11px;height:11px;top:30%;left:80%;animation-delay:1.8s;"></div>
-                    <div class="amat-node" style="width:7px;height:7px;top:75%;left:75%;animation-delay:0.6s;"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center backdrop-blur-sm">
-                            <i class="fas fa-boxes-stacked text-4xl text-blue-200"></i>
-                        </div>
-                        <div class="font-bold text-blue-200 text-sm tracking-widest uppercase mb-1">Supply Chain AI</div>
-                        <div class="text-blue-300/70 text-xs font-mono">46M+ records · M5 dataset</div>
-                        <div class="mt-4 flex gap-1 justify-center items-end" style="height:28px">
-                            <div class="amat-bar w-1 rounded-sm" style="height:12px;animation-delay:0s"></div>
-                            <div class="amat-bar w-1 rounded-sm" style="height:18px;animation-delay:0.2s"></div>
-                            <div class="amat-bar w-1 rounded-sm" style="height:10px;animation-delay:0.4s"></div>
-                            <div class="amat-bar w-1 rounded-sm" style="height:24px;animation-delay:0.6s"></div>
-                            <div class="amat-bar w-1 rounded-sm" style="height:16px;animation-delay:0.8s"></div>
-                            <div class="amat-bar w-1 rounded-sm" style="height:20px;animation-delay:1.0s"></div>
-                            <div class="amat-bar w-1 rounded-sm" style="height:14px;animation-delay:1.2s"></div>
-                            <div class="amat-bar w-1 rounded-sm" style="height:26px;animation-delay:1.4s"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-3/5 p-9">
-                    <div class="flex flex-wrap items-center gap-2 mb-4">
-                        <span class="in-progress-badge">In Progress</span>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">Python</span>
-                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">XGBoost</span>
-                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">ARIMA</span>
-                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">LangChain</span>
-                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">ChromaDB</span>
-                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">FastAPI</span>
-                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">MLflow</span>
-                        <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">Docker</span>
-                    </div>
-                    <h3 class="text-2xl font-extrabold text-gray-900 mb-3">Agentic Supply Chain Demand Forecasting &amp; Inventory Optimization</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-5">End-to-end ML forecasting + GenAI reasoning system for service parts demand planning and inventory optimization. Powered by the M5 Forecasting Dataset (46M+ real Walmart records) — the directly transferable analog to rail-network freight &amp; service-parts demand. Covers NPI launches, reliability signals, geospatial field operations, and service campaigns. A GenAI reasoning layer (LangChain + RAG) enables plain-English stakeholder queries over forecast outputs.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">46M+ records</span>
-                        <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">MAPE &lt; 8%</span>
-                        <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">35% faster lookup</span>
-                        <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">Inventory Optimization</span>
-                        <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">M5 Gold Standard</span>
-                    </div>
-                </div>
+        <!-- RIGHT CONTENT -->
+        <div class="md:w-3/5 p-9">
+
+            <!-- STATUS -->
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="metric-badge">Production-Ready</span>
             </div>
+
+            <!-- TECH STACK -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">Python</span>
+                <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">XGBoost</span>
+                <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">ARIMA</span>
+                <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">LangChain</span>
+                <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">ChromaDB</span>
+                <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">FastAPI</span>
+                <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">MLflow</span>
+                <span class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">Docker</span>
+            </div>
+
+            <!-- TITLE -->
+            <h3 class="text-2xl font-extrabold text-gray-900 mb-3">
+                Agentic Supply Chain Orchestrator — Forecasting & Optimization
+            </h3>
+
+            <!-- DESCRIPTION -->
+            <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                End-to-end forecasting + agentic reasoning system for demand planning and inventory optimization. 
+                Built on 46M+ records (M5 dataset), combining ML forecasting (XGBoost, ARIMA) with a RAG-powered reasoning layer 
+                that enables natural language queries over demand signals, forecasts, and operational constraints. 
+                Designed to mirror real-world supply chain and rail logistics systems.
+            </p>
+
+            <!-- METRICS -->
+            <div class="flex flex-wrap gap-2">
+                <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">46M+ records</span>
+                <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">MAPE &lt; 8%</span>
+                <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">35% faster insights</span>
+                <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">Inventory Optimization</span>
+                <span class="metric-badge" style="background:rgba(30,136,229,0.1);border-color:rgba(30,136,229,0.3);color:#1565a0;">RAG-powered reasoning</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+  <!-- 3-column grid -->
+<div class="grid md:grid-cols-3 gap-6">
+
+    <!-- Railway Track Inspection -->
+    <div class="bento-card project-card overflow-hidden reveal"
+         data-project="Railway Track Inspection"
+         data-category="ml">
+
+        <a href="https://github.com/VigneshwariJayaprakash/railway-track-inspector"
+           target="_blank"
+           class="overlay-link track-github">
+            <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">
+                View on GitHub →
+            </span>
+        </a>
+
+        <div class="h-44 overflow-hidden">
+            <img src="railway-defect-detection-pro.jpg"
+                 alt="Railway Track Inspection"
+                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
         </div>
 
-        <!-- 3-column grid — REFRAMED first card for rail/optimization -->
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="bento-card project-card overflow-hidden reveal" data-project="Railway Track Inspection">
-                <a href="https://github.com/VigneshwariJayaprakash/railway-track-inspector" target="_blank" class="overlay-link track-github">
-                    <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">View on GitHub →</span>
-                </a>
-                <div class="h-44 overflow-hidden">
-                    <img src="railway-defect-detection-pro.jpg" alt="Railway Track Inspection" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                </div>
-                <div class="p-6">
-                    <div class="flex flex-wrap gap-1.5 mb-3">
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">PyTorch</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">YOLO11</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">OpenCV</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">Geospatial</span>
-                    </div>
-                    <h4 class="font-extrabold text-gray-900 mb-2 leading-tight">AI-Powered Railway Track Inspection &amp; Defect Optimization</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed mb-3">Rail-domain CV pipeline processing 500+ hours of footage detecting safety-critical track defects with geospatial tagging. Real-time Streamlit dashboard with defect-type filtering, exportable inspection reports, and a maintenance-prioritization layer.</p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="metric-badge">92% accuracy</span>
-                        <span class="metric-badge">40% less manual inspection</span>
-                    </div>
-                </div>
+        <div class="p-6">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">PyTorch</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">YOLO</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">OpenCV</span>
             </div>
-            <div class="bento-card project-card overflow-hidden reveal delay-1" data-project="Wildfire Detection">
-                <a href="https://github.com/aneeshjayan/Wildfire-detection" target="_blank" class="overlay-link track-github">
-                    <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">View on GitHub →</span>
-                </a>
-                <div class="h-44 overflow-hidden">
-                    <img src="wildfire-detection-image.png" alt="Wildfire Detection" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                </div>
-                <div class="p-6">
-                    <div class="flex flex-wrap gap-1.5 mb-3">
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">PyTorch</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">Vision Transformers</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">XAI</span>
-                    </div>
-                    <h4 class="font-extrabold text-gray-900 mb-2 leading-tight">Multimodal Wildfire Detection Network</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed mb-3">Deep learning pipeline fusing RGB &amp; thermal imagery via Vision Transformers with attention heatmap explainability.</p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="metric-badge">98.6% accuracy</span>
-                        <span class="metric-badge">+20% precision</span>
-                    </div>
-                </div>
-            </div>
-            <div class="bento-card project-card overflow-hidden reveal delay-2" data-project="Fraud Detection">
-                <a href="https://github.com/VigneshwariJayaprakash/fraud-risk-platform" target="_blank" class="overlay-link track-github">
-                    <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">View on GitHub →</span>
-                </a>
-                <div class="h-44 overflow-hidden">
-                    <img src="fraud_detection_project.png" alt="Fraud Detection" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                </div>
-                <div class="p-6">
-                    <div class="flex flex-wrap gap-1.5 mb-3">
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">XGBoost</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">SHAP</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">scikit-learn</span>
-                    </div>
-                    <h4 class="font-extrabold text-gray-900 mb-2 leading-tight">Transaction Risk Scoring &amp; Fraud Detection</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed mb-3">Time-aware fraud pipeline on 300K+ real-time transactions with leakage-safe temporal modeling and SHAP interpretability — open-source companion to the BNSF revenue-fraud system that earned CFO recognition.</p>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="metric-badge">MCC: 0.50</span>
-                        <span class="metric-badge">300K+ transactions</span>
-                    </div>
-                </div>
+
+            <h4 class="font-extrabold text-gray-900 mb-2 leading-tight">
+                Railway Track Defect Detection & Maintenance Optimization
+            </h4>
+
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">
+                Computer vision pipeline processing 500+ hours of track footage to detect safety-critical defects. 
+                Integrated dashboard enables real-time inspection, prioritization, and automated reporting for maintenance teams.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5">
+                <span class="metric-badge">92% accuracy</span>
+                <span class="metric-badge">40% less manual inspection</span>
             </div>
         </div>
     </div>
-</section>
+
+    <!-- Wildfire Detection -->
+    <div class="bento-card project-card overflow-hidden reveal delay-1"
+         data-project="Wildfire Detection"
+         data-category="ml">
+
+        <a href="https://github.com/aneeshjayan/Wildfire-detection"
+           target="_blank"
+           class="overlay-link track-github">
+            <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">
+                View on GitHub →
+            </span>
+        </a>
+
+        <div class="h-44 overflow-hidden">
+            <img src="wildfire-detection-image.png"
+                 alt="Wildfire Detection"
+                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+        </div>
+
+        <div class="p-6">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">PyTorch</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">Vision Transformers</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">XAI</span>
+            </div>
+
+            <h4 class="font-extrabold text-gray-900 mb-2 leading-tight">
+                Multimodal Wildfire Detection (RGB + Thermal)
+            </h4>
+
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">
+                Vision Transformer-based model combining RGB and thermal imagery for early wildfire detection, 
+                with attention-based explainability for interpretable decision-making.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5">
+                <span class="metric-badge">98.6% accuracy</span>
+                <span class="metric-badge">+20% precision</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fraud Detection -->
+    <div class="bento-card project-card overflow-hidden reveal delay-2"
+         data-project="Fraud Detection"
+         data-category="ml">
+
+        <a href="https://github.com/VigneshwariJayaprakash/fraud-risk-platform"
+           target="_blank"
+           class="overlay-link track-github">
+            <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-full text-sm">
+                View on GitHub →
+            </span>
+        </a>
+
+        <div class="h-44 overflow-hidden">
+            <img src="fraud_detection_project.png"
+                 alt="Fraud Detection"
+                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+        </div>
+
+        <div class="p-6">
+            <div class="flex flex-wrap gap-1.5 mb-3">
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">XGBoost</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">SHAP</span>
+                <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">scikit-learn</span>
+            </div>
+
+            <h4 class="font-extrabold text-gray-900 mb-2 leading-tight">
+                Real-Time Fraud Detection & Risk Scoring
+            </h4>
+
+            <p class="text-gray-500 text-xs leading-relaxed mb-3">
+                Time-aware fraud detection system on 300K+ transactions using leakage-safe modeling and SHAP-based explainability, 
+                mirroring production-grade financial risk systems.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5">
+                <span class="metric-badge">MCC: 0.50</span>
+                <span class="metric-badge">300K+ transactions</span>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <!-- ── EDUCATION ── -->
 <section class="py-24 px-6 section-alt">
