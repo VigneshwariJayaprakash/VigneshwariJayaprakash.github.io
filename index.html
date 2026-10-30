@@ -62,11 +62,11 @@ h2.title{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,68px)
 body::before{content:"";position:fixed;inset:0;z-index:-3;background:var(--grad-hero)}
 .progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:200;background:var(--grad);box-shadow:var(--shadow-glow)}
 .spot{position:fixed;inset:0;pointer-events:none;z-index:40;background:radial-gradient(600px at var(--mx,50%) var(--my,30%),rgba(79,181,133,.08),transparent 80%)}
-.cursor-ring,.cursor-dot{position:fixed;top:0;left:0;pointer-events:none;z-index:300;border-radius:50%;display:none}
-.cursor-ring{width:36px;height:36px;border:1px solid rgba(31,90,67,.5);transition:width .22s var(--ease),height .22s var(--ease),background .22s,border-color .22s;mix-blend-mode:multiply}
-.cursor-ring.hover{width:60px;height:60px;background:rgba(168,203,181,.25);border-color:transparent}
-.cursor-dot{width:6px;height:6px;background:var(--plum)}
-@media (hover:hover) and (pointer:fine){.cursor-ring,.cursor-dot{display:block}body{cursor:none}a,button,input,textarea,label{cursor:none}}
+/* Cursor: the real pointer stays visible; a soft ring follows it closely and grows over clickable things */
+.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:300;border-radius:50%;display:none;width:28px;height:28px;margin:-14px 0 0 -14px;border:1.5px solid rgba(31,90,67,.35);transition:width .25s var(--ease),height .25s var(--ease),margin .25s var(--ease),background .25s,border-color .25s,opacity .25s}
+.cursor-ring.hover{width:46px;height:46px;margin:-23px 0 0 -23px;background:rgba(79,181,133,.14);border-color:rgba(31,90,67,.55)}
+.cursor-ring.down{width:20px;height:20px;margin:-10px 0 0 -10px;background:rgba(79,181,133,.25)}
+@media (hover:hover) and (pointer:fine){.cursor-ring{display:block}}
 
 /* Loader */
 .loader{position:fixed;inset:0;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--grad-hero);transition:opacity .7s var(--ease),visibility .7s}
@@ -200,26 +200,34 @@ section > .wrap{position:relative}
 .filters button{padding:8px 18px;font-size:13.5px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.7);color:var(--muted);transition:all .25s}
 .filters button:hover{border-color:var(--lavender);color:var(--plum)}
 .filters button[aria-pressed="true"]{background:var(--grad);border-color:transparent;color:#fff;box-shadow:var(--shadow-elegant)}
-.projects{display:grid;gap:24px}
-.proj[hidden]{display:none}
-.flip{display:grid;perspective:1400px}
-.face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .8s var(--ease),border-color .3s,box-shadow .3s;padding:40px}
-.back{transform:rotateY(180deg);display:flex;flex-direction:column;gap:24px;border-color:rgba(168,203,181,.6);box-shadow:var(--shadow-elegant)}
+/* Projects: tile grid, 3 per row */
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+.proj{display:flex}
+.proj .flip{flex:1}
+.plinks{display:flex;flex-wrap:wrap;gap:8px}
+.flip{display:grid;perspective:1400px;position:relative}
+.face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .8s var(--ease),border-color .3s,box-shadow .3s;padding:28px}
+.back{position:absolute;inset:0;overflow-y:auto;scrollbar-width:thin;transform:rotateY(180deg);display:flex;flex-direction:column;gap:16px;border-color:rgba(168,203,181,.6);box-shadow:var(--shadow-elegant)}
 .flip.flipped .front{transform:rotateY(-180deg)}
 .flip.flipped .back{transform:rotateY(0)}
-.front{display:grid;grid-template-columns:2fr 7fr 3fr;gap:28px}
+.front{display:flex;flex-direction:column;gap:0}
+.ptop{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.ptop .pmeta{margin:0}
+.pbody{flex:1;display:flex;flex-direction:column}
+.pbody p{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.pbody .tags{margin-top:auto;padding-top:18px}
 .front:hover{border-color:var(--lavender);box-shadow:var(--shadow-elegant)}
-.pnum{font-family:var(--serif);font-size:56px;line-height:1;color:rgba(31,90,67,.35);transition:color .3s}
+.pnum{font-family:var(--serif);font-size:44px;line-height:1;color:rgba(31,90,67,.35);transition:color .3s}
 .front:hover .pnum{color:var(--plum)}
 .pmeta{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:10px}
 .badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:4px 12px;border-radius:999px;border:1px solid rgba(168,203,181,.5);background:rgba(168,203,181,.14);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--plum)}
 .badge.live::before{content:"";width:6px;height:6px;border-radius:50%;background:#34D399}
-.front h3{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,38px);line-height:1.1;margin:0}
+.front h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.2vw,28px);line-height:1.15;margin:0}
 .psub{color:var(--plum);font-size:14px;margin:6px 0 14px}
-.front p{color:var(--muted);margin:0;line-height:1.7}
+.front p{color:var(--muted);margin:0;line-height:1.65;font-size:14.5px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;list-style:none;padding:0}
 .tags li{padding:4px 12px;font-size:12px;border-radius:999px;background:rgba(214,239,199,.35);border:1px solid rgba(214,239,199,.7);color:var(--plum)}
-.pactions{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:10px}
+.pactions{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid var(--border)}
 .pbtn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:999px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .25s;white-space:nowrap}
 .pbtn.solid{background:var(--plum);color:#fff;border:1px solid var(--plum)}
 .pbtn.solid:hover{background:var(--plum-2);box-shadow:var(--shadow-elegant)}
@@ -228,11 +236,11 @@ section > .wrap{position:relative}
 .back-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
 .back-top .who{display:flex;align-items:center;gap:16px}
 .k-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(31,90,67,.6)}
-.impact{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.impact div{border-radius:18px;border:1px solid rgba(168,203,181,.35);background:rgba(168,203,181,.12);padding:16px}
-.impact .n{font-family:var(--serif);font-size:24px;color:rgba(31,90,67,.45)}
-.impact p{margin:6px 0 0;font-size:14px;line-height:1.4}
-.back-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
+.impact{display:grid;grid-template-columns:1fr;gap:10px}
+.impact > div{border-radius:16px;border:1px solid rgba(168,203,181,.35);background:rgba(168,203,181,.12);padding:12px 14px;display:flex;gap:12px;align-items:baseline}
+.impact .n{font-family:var(--serif);font-size:20px;color:rgba(31,90,67,.45);flex-shrink:0}
+.impact p{margin:0;font-size:13.5px;line-height:1.4}
+.back-foot{display:flex;flex-direction:column;gap:14px;margin-top:auto}
 .back-foot .tags{margin-top:8px}
 .back-foot .tags li{background:rgba(168,203,181,.15);border-color:rgba(168,203,181,.35);font-size:11px;padding:3px 10px}
 
@@ -307,8 +315,7 @@ footer{position:relative;padding:32px 0 48px;text-align:center;font-size:13px;co
   .hero-grid,.about-grid,.tool-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
   .portrait{max-width:420px;margin:0 auto}
   .found{grid-template-columns:1fr}
-  .front{grid-template-columns:1fr;gap:16px}
-  .pactions{flex-direction:row;align-items:center;justify-content:flex-start;flex-wrap:wrap}
+  .projects{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:640px){
   .wrap{padding:0 16px}
@@ -316,7 +323,8 @@ footer{position:relative;padding:32px 0 48px;text-align:center;font-size:13px;co
   .hero{padding-top:110px}
   .nav a:not(.brand):not(.keep){display:none}
   .stats{gap:18px}.stats .div{display:none}
-  .face{padding:26px}
+  .projects{grid-template-columns:1fr}
+  .face{padding:24px}
   .float-tag.t1{left:-6px}.float-tag.t2{right:-6px}
   .mini{grid-template-columns:1fr 1fr;gap:12px}
   .ledger,.radar-card,.heat-card{padding:22px}
@@ -344,7 +352,6 @@ footer{position:relative;padding:32px 0 48px;text-align:center;font-size:13px;co
 <div class="spot" aria-hidden="true"></div>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <div class="cursor-ring" id="ring" aria-hidden="true"></div>
-<div class="cursor-dot" id="dot" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <nav class="nav" aria-label="Main">
@@ -463,6 +470,8 @@ footer{position:relative;padding:32px 0 48px;text-align:center;font-size:13px;co
       <button type="button" data-filter="viz" aria-pressed="false">Data analysis &amp; visualization</button>
     </div>
     <div class="projects" id="projects"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -629,7 +638,7 @@ var skills = [
   {t:'Cloud', d:'Cloud-native ML systems and serverless infrastructure.', s:['AWS S3','AWS Lambda','AWS Glue','Athena','SageMaker','Azure','Kubernetes','Docker']}
 ];
 
-/* Projects: "url" is the main link. Add "linkLabel" to show something other than "Code" (e.g. a live dashboard). */
+/* Projects: "url" is the GitHub link. Use "links" instead (a list of {label,url}) for live demos or dashboards. */
 var projects = [
   {cat:'ai viz', badge:'In progress', live:true, when:'2026', title:'Expense Insights Agent', sub:'LangGraph agent · Finance analytics',
    desc:"A LangGraph agent that answers plain-English finance questions over 52K corporate-card transactions. I'm adding SQL-based analytics, anomaly detection and an evaluation suite so every answer is accurate and measurable.",
@@ -656,12 +665,16 @@ var projects = [
    tags:['XGBoost','SHAP','scikit-learn'], stack:['XGBoost','SHAP','scikit-learn','pandas'],
    role:'Data Scientist', impact:['300K transactions','MCC 0.50','70% fraud precision'],
    url:'https://github.com/VigneshwariJayaprakash/fraud-risk-platform'},
-  {cat:'viz', badge:'Live dashboard', live:true, when:'2025', title:'U.S. Flight Delay & Cancellation Analytics', sub:'Team project · Tableau dashboards',
-   desc:'Three interactive Tableau dashboards over 3M+ U.S. domestic flights (BTS, 2019 to 2023) that help airline operations managers, airport authorities and travelers explore delays, cancellations and route reliability, with filters by airline, airport, route and year.',
-   tags:['Tableau','Table Calculations','Parameters'], stack:['Tableau','Tableau Public','Calculated Fields','Table Calculations','Parameters'],
-   role:'Data Analyst', impact:['3M+ flights · 3 dashboards · 11 visualizations','4x cancellation spike in 2020','Night flights arrive 17+ min late on average'],
-   url:'https://public.tableau.com/app/profile/vigneshwari.jayaprakash/viz/U_S_DomesticFlightPerformanceandOperationalRiskAnalysis20192023/ExecutiveSummary?publish=yes',
-   linkLabel:'Live dashboard'},
+  {cat:'viz', badge:'3 live dashboards', live:true, when:'2025', title:'U.S. Flight Delay & Cancellation Analytics', sub:'Team project · Tableau Public',
+   desc:'Three linked Tableau dashboards over 3M+ U.S. domestic flights (BTS, 2019 to 2023) for airline operations, airport and traveler stakeholders. Executive Summary tracks flight volume, top hubs, the busiest weekday and yearly cancellation rates. Delay & Operational Risk compares airline delay recovery, high-risk routes, time-of-day and monthly delays. Cancellation Deep Dive breaks cancellations down by cause each year, with a running total.',
+   tags:['Tableau','Table Calculations','Parameters','Data Cleaning'], stack:['Tableau','Tableau Public','Calculated Fields','Table Calculations','Parameters','Filters & Actions'],
+   role:'Data Analyst',
+   impact:['Executive Summary: cancellation rate spiked in 2020 and recovered by 2021; Atlanta leads departures','Delay & Risk: night flights arrive 17+ min late vs. early for mornings; June peaks at ~14.8 min','Cancellation Deep Dive: cause mix by year and a running total of ~78K cancellations'],
+   links:[
+     {label:'Executive Summary',url:'https://public.tableau.com/app/profile/vigneshwari.jayaprakash/viz/U_S_DomesticFlightPerformanceandOperationalRiskAnalysis20192023/ExecutiveSummary?publish=yes'},
+     {label:'Delay & Risk',url:'https://public.tableau.com/app/profile/vigneshwari.jayaprakash/viz/U_S_DomesticFlightPerformanceandOperationalRiskAnalysis20192023/DelayDeepDive?publish=yes'},
+     {label:'Cancellations',url:'https://public.tableau.com/app/profile/vigneshwari.jayaprakash/viz/U_S_DomesticFlightPerformanceandOperationalRiskAnalysis20192023/CancellationAnalysis?publish=yes'}
+   ]},
   {cat:'ml viz', when:'2025', title:'Railway Track Defect Detection', sub:'Computer vision · Inspection dashboard',
    desc:'A computer vision pipeline that scans 500+ hours of track footage for safety-critical defects, with an inspection dashboard and automated reports for maintenance teams.',
    tags:['PyTorch','YOLO','OpenCV'], stack:['PyTorch','YOLO','OpenCV','Streamlit'],
@@ -743,30 +756,37 @@ document.getElementById('track').innerHTML=trackHtml+trackHtml;
   svg.innerHTML=h+'</g>';
 })();
 
-/* ---------- Projects ---------- */
+/* ---------- Projects (tile grid, 3 per row) ---------- */
+var curFilter='all';
 var pwrap=document.getElementById('projects');
-pwrap.innerHTML=projects.map(function(p,i){
+function linkBtns(p,back){
+  if(p.links)return p.links.map(function(l){return '<a class="pbtn solid track-live" href="'+l.url+'" target="_blank" rel="noopener">'+esc(l.label)+' ↗</a>';}).join('');
+  return '<a class="pbtn solid track-github" href="'+p.url+'" target="_blank" rel="noopener">'+(back?'Code on GitHub':'Code')+' ↗</a>';
+}
+function cardHtml(p,i){
   var n=pad(i+1);
-  var isLive=!!p.linkLabel;
-  var linkCls=isLive?'track-live':'track-github';
-  var frontLink=isLive?esc(p.linkLabel):'Code';
-  var backLink=isLive?esc(p.linkLabel):'Code on GitHub';
   return '<div class="proj reveal tilt" data-cat="'+p.cat+'"><div class="flip">'+
   '<article class="card face front">'+
-    '<div><div class="pnum">'+n+'</div><div class="pmeta">'+esc(p.when)+'</div></div>'+
-    '<div>'+(p.badge?'<div class="badge'+(p.live?' live':'')+'">'+esc(p.badge)+'</div>':'')+
+    '<div class="ptop"><div class="pnum">'+n+'</div><div class="pmeta">'+esc(p.when)+'</div></div>'+
+    '<div class="pbody">'+(p.badge?'<div class="badge'+(p.live?' live':'')+'">'+esc(p.badge)+'</div>':'')+
       '<h3>'+esc(p.title)+'</h3><div class="psub">'+esc(p.sub)+'</div><p>'+esc(p.desc)+'</p>'+
       '<ul class="tags">'+p.tags.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul></div>'+
-    '<div class="pactions"><a class="pbtn solid '+linkCls+'" href="'+p.url+'" target="_blank" rel="noopener">'+frontLink+' ↗</a>'+
+    '<div class="pactions"><div class="plinks">'+linkBtns(p,false)+'</div>'+
       '<button type="button" class="pbtn line" data-flip aria-label="View impact for '+esc(p.title)+'">View impact ↻</button></div>'+
   '</article>'+
   '<div class="card face back" aria-hidden="true" inert>'+
     '<div class="back-top"><div class="who"><div class="pnum" style="font-size:48px">'+n+'</div><div><div class="k-label">Role</div><div style="font-weight:500;font-size:14px;margin-top:4px">'+esc(p.role)+'</div></div></div><div class="pmeta" style="margin:0">'+esc(p.when)+'</div></div>'+
     '<div><div class="k-label" style="margin-bottom:12px">Impact snapshot</div><div class="impact">'+p.impact.map(function(x,j){return '<div><div class="n">'+pad(j+1)+'</div><p>'+esc(x)+'</p></div>';}).join('')+'</div></div>'+
     '<div class="back-foot"><div><div class="k-label">Stack</div><ul class="tags">'+p.stack.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul></div>'+
-      '<div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="pbtn line" data-flip>← Back to overview</button><a class="pbtn solid '+linkCls+'" href="'+p.url+'" target="_blank" rel="noopener">'+backLink+' ↗</a></div></div>'+
+      '<div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="pbtn line" data-flip>← Back to overview</button>'+linkBtns(p,true)+'</div></div>'+
   '</div></div></div>';
-}).join('');
+}
+
+function render(){
+  pwrap.innerHTML=projects.map(function(p,i){return (curFilter==='all'||p.cat.split(' ').indexOf(curFilter)!==-1)?cardHtml(p,i):'';}).join('');
+  pwrap.querySelectorAll('.reveal').forEach(function(el){if(window.__io)window.__io.observe(el);});
+}
+render();
 
 pwrap.addEventListener('click',function(e){
   var b=e.target.closest('[data-flip]');if(!b)return;
@@ -780,13 +800,14 @@ pwrap.addEventListener('click',function(e){
 
 var fbtns=document.querySelectorAll('.filters button');
 fbtns.forEach(function(b){b.addEventListener('click',function(){
-  var f=b.dataset.filter;
-  document.querySelectorAll('.proj').forEach(function(p){p.hidden=!(f==='all'||p.dataset.cat.split(' ').indexOf(f)!==-1);});
+  curFilter=b.dataset.filter;
+  render();
   fbtns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
 });});
 
 /* ---------- Reveal on scroll ---------- */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+window.__io=io;
 document.querySelectorAll('.reveal,.job,#ledger,#radar').forEach(function(el){io.observe(el);});
 
 /* ---------- Scroll: progress, timeline, nav ---------- */
@@ -804,12 +825,19 @@ function onScroll(){
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 
 /* ---------- Cursor, spotlight, magnetic, tilt ---------- */
-var ring=document.getElementById('ring'),dot=document.getElementById('dot'),mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+var ring=document.getElementById('ring'),mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
 var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;document.documentElement.style.setProperty('--mx',mx+'px');document.documentElement.style.setProperty('--my',my+'px');});
 if(fine){
-  (function loop(){rx+=(mx-rx)*0.18;ry+=(my-ry)*0.18;ring.style.transform='translate('+(rx-ring.offsetWidth/2)+'px,'+(ry-ring.offsetHeight/2)+'px)';dot.style.transform='translate('+(mx-3)+'px,'+(my-3)+'px)';requestAnimationFrame(loop);})();
-  document.addEventListener('mouseover',function(e){ring.classList.toggle('hover',!!e.target.closest('a,button,input,textarea,.card'));});
+  var follow=reduce?1:0.35;
+  ring.style.opacity='0';
+  addEventListener('mousemove',function(){ring.style.opacity='1';},{once:true});
+  (function loop(){rx+=(mx-rx)*follow;ry+=(my-ry)*follow;ring.style.transform='translate('+rx+'px,'+ry+'px)';requestAnimationFrame(loop);})();
+  document.addEventListener('mouseover',function(e){ring.classList.toggle('hover',!!e.target.closest('a,button,input,textarea,label'));});
+  document.addEventListener('mousedown',function(){ring.classList.add('down');});
+  document.addEventListener('mouseup',function(){ring.classList.remove('down');});
+  document.documentElement.addEventListener('mouseleave',function(){ring.style.opacity='0';});
+  document.documentElement.addEventListener('mouseenter',function(){ring.style.opacity='1';});
   if(!reduce){
     document.querySelectorAll('.magnetic').forEach(function(m){
       m.addEventListener('mousemove',function(e){var r=m.getBoundingClientRect();m.style.transform='translate('+((e.clientX-r.left-r.width/2)*0.25)+'px,'+((e.clientY-r.top-r.height/2)*0.35)+'px)';});
