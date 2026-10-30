@@ -408,7 +408,7 @@ footer{position:relative;padding:32px 0 48px;text-align:center;font-size:13px;co
     <div>
       <div class="about-copy">
         <p class="reveal tilt">I started at <strong>Infosys</strong> in 2013 as a software engineer and moved into data science, working on supplier segmentation, fraud detection, predictive maintenance for locomotives, and replacing mainframe reports with Tableau.</p>
-        <p class="reveal tilt">After moving to the United States, I spent time on structured self-study in deep learning, LLMs, retrieval-augmented generation and cloud ML, then completed an M.S. in Data Science (Computing and Decision Analytics) at <strong>Arizona State University</strong>.</p>
+        <p class="reveal tilt">After moving to the United States, I worked as a freelance data science analyst for small-business clients while deepening my skills in deep learning, LLMs, retrieval-augmented generation and cloud ML, then completed an M.S. in Data Science (Computing and Decision Analytics) at <strong>Arizona State University</strong>.</p>
         <p class="reveal tilt">Today I build models that are measured against a baseline, explained with tools like SHAP, and wrapped in interfaces people actually use. Outside work I paint, sew and read.</p>
       </div>
       <div class="mini reveal tilt">
@@ -460,7 +460,7 @@ footer{position:relative;padding:32px 0 48px;text-align:center;font-size:13px;co
       <button type="button" data-filter="all" aria-pressed="true">All</button>
       <button type="button" data-filter="ai" aria-pressed="false">AI and agents</button>
       <button type="button" data-filter="ml" aria-pressed="false">Machine learning</button>
-      <button type="button" data-filter="viz" aria-pressed="false">Visualization</button>
+      <button type="button" data-filter="viz" aria-pressed="false">Data analysis &amp; visualization</button>
     </div>
     <div class="projects" id="projects"></div>
   </div>
@@ -500,10 +500,11 @@ footer{position:relative;padding:32px 0 48px;text-align:center;font-size:13px;co
 
       <article class="job">
         <span class="dot"></span>
-        <div class="when"><span>2019 — 2024</span><span class="t">Self-study</span></div>
-        <div class="card lift reveal"><h3>Independent Study</h3><p class="org">United States</p>
+        <div class="when"><span>Feb 2019 — Aug 2024</span><span class="t">Freelance</span></div>
+        <div class="card lift reveal"><h3>Freelance Data Science Analyst</h3><p class="org">Self-Employed · Remote</p>
           <ul>
-            <li>Studied deep learning, LLMs, RAG and cloud ML, completing the Machine Learning and Deep Learning Specializations (DeepLearning.AI) and Generative AI with AWS before starting at ASU.</li>
+            <li>Delivered machine learning, forecasting and analytics solutions for small-business clients using Python, SQL, Tableau and Power BI, translating business questions into data-driven recommendations.</li>
+            <li>Kept skills current in deep learning, LLMs, RAG and cloud ML, completing the Machine Learning and Deep Learning Specializations (DeepLearning.AI) and Generative AI with AWS.</li>
           </ul></div>
       </article>
 
@@ -628,6 +629,7 @@ var skills = [
   {t:'Cloud', d:'Cloud-native ML systems and serverless infrastructure.', s:['AWS S3','AWS Lambda','AWS Glue','Athena','SageMaker','Azure','Kubernetes','Docker']}
 ];
 
+/* Projects: "url" is the main link. Add "linkLabel" to show something other than "Code" (e.g. a live dashboard). */
 var projects = [
   {cat:'ai viz', badge:'In progress', live:true, when:'2026', title:'Expense Insights Agent', sub:'LangGraph agent · Finance analytics',
    desc:"A LangGraph agent that answers plain-English finance questions over 52K corporate-card transactions. I'm adding SQL-based analytics, anomaly detection and an evaluation suite so every answer is accurate and measurable.",
@@ -654,6 +656,12 @@ var projects = [
    tags:['XGBoost','SHAP','scikit-learn'], stack:['XGBoost','SHAP','scikit-learn','pandas'],
    role:'Data Scientist', impact:['300K transactions','MCC 0.50','70% fraud precision'],
    url:'https://github.com/VigneshwariJayaprakash/fraud-risk-platform'},
+  {cat:'viz', badge:'Live dashboard', live:true, when:'2025', title:'U.S. Flight Delay & Cancellation Analytics', sub:'Team project · Tableau dashboards',
+   desc:'Three interactive Tableau dashboards over 3M+ U.S. domestic flights (BTS, 2019 to 2023) that help airline operations managers, airport authorities and travelers explore delays, cancellations and route reliability, with filters by airline, airport, route and year.',
+   tags:['Tableau','Table Calculations','Parameters'], stack:['Tableau','Tableau Public','Calculated Fields','Table Calculations','Parameters'],
+   role:'Data Analyst', impact:['3M+ flights · 3 dashboards · 11 visualizations','4x cancellation spike in 2020','Night flights arrive 17+ min late on average'],
+   url:'https://public.tableau.com/app/profile/vigneshwari.jayaprakash/viz/U_S_DomesticFlightPerformanceandOperationalRiskAnalysis20192023/ExecutiveSummary?publish=yes',
+   linkLabel:'Live dashboard'},
   {cat:'ml viz', when:'2025', title:'Railway Track Defect Detection', sub:'Computer vision · Inspection dashboard',
    desc:'A computer vision pipeline that scans 500+ hours of track footage for safety-critical defects, with an inspection dashboard and automated reports for maintenance teams.',
    tags:['PyTorch','YOLO','OpenCV'], stack:['PyTorch','YOLO','OpenCV','Streamlit'],
@@ -739,20 +747,24 @@ document.getElementById('track').innerHTML=trackHtml+trackHtml;
 var pwrap=document.getElementById('projects');
 pwrap.innerHTML=projects.map(function(p,i){
   var n=pad(i+1);
+  var isLive=!!p.linkLabel;
+  var linkCls=isLive?'track-live':'track-github';
+  var frontLink=isLive?esc(p.linkLabel):'Code';
+  var backLink=isLive?esc(p.linkLabel):'Code on GitHub';
   return '<div class="proj reveal tilt" data-cat="'+p.cat+'"><div class="flip">'+
   '<article class="card face front">'+
     '<div><div class="pnum">'+n+'</div><div class="pmeta">'+esc(p.when)+'</div></div>'+
     '<div>'+(p.badge?'<div class="badge'+(p.live?' live':'')+'">'+esc(p.badge)+'</div>':'')+
       '<h3>'+esc(p.title)+'</h3><div class="psub">'+esc(p.sub)+'</div><p>'+esc(p.desc)+'</p>'+
       '<ul class="tags">'+p.tags.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul></div>'+
-    '<div class="pactions"><a class="pbtn solid track-github" href="'+p.url+'" target="_blank" rel="noopener">Code ↗</a>'+
+    '<div class="pactions"><a class="pbtn solid '+linkCls+'" href="'+p.url+'" target="_blank" rel="noopener">'+frontLink+' ↗</a>'+
       '<button type="button" class="pbtn line" data-flip aria-label="View impact for '+esc(p.title)+'">View impact ↻</button></div>'+
   '</article>'+
   '<div class="card face back" aria-hidden="true" inert>'+
     '<div class="back-top"><div class="who"><div class="pnum" style="font-size:48px">'+n+'</div><div><div class="k-label">Role</div><div style="font-weight:500;font-size:14px;margin-top:4px">'+esc(p.role)+'</div></div></div><div class="pmeta" style="margin:0">'+esc(p.when)+'</div></div>'+
     '<div><div class="k-label" style="margin-bottom:12px">Impact snapshot</div><div class="impact">'+p.impact.map(function(x,j){return '<div><div class="n">'+pad(j+1)+'</div><p>'+esc(x)+'</p></div>';}).join('')+'</div></div>'+
     '<div class="back-foot"><div><div class="k-label">Stack</div><ul class="tags">'+p.stack.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul></div>'+
-      '<div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="pbtn line" data-flip>← Back to overview</button><a class="pbtn solid track-github" href="'+p.url+'" target="_blank" rel="noopener">Code on GitHub ↗</a></div></div>'+
+      '<div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="pbtn line" data-flip>← Back to overview</button><a class="pbtn solid '+linkCls+'" href="'+p.url+'" target="_blank" rel="noopener">'+backLink+' ↗</a></div></div>'+
   '</div></div></div>';
 }).join('');
 
@@ -858,6 +870,7 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
 /* ---------- Analytics ---------- */
 function track(sel,name,label){document.addEventListener('click',function(e){var a=e.target.closest(sel);if(a&&typeof gtag==='function')gtag('event',name,{event_category:'engagement',event_label:label(a)});});}
 track('.track-github','github_click',function(a){return a.href;});
+track('.track-live','live_demo_click',function(a){return a.href;});
 track('.track-contact','contact_click',function(a){return a.dataset.label||'contact';});
 track('.track-social','social_click',function(a){return a.dataset.label||'linkedin';});
 })();
